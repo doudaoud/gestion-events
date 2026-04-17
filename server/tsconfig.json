@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "ESNext", // Utilise les fonctionnalités JS les plus récentes
+    "module": "NodeNext", // Indispensable pour le support ESM de Node.js
+    "moduleResolution": "NodeNext", // Assure la compatibilité avec "type": "module"
+    "outDir": "./dist", // Dossier où le code compilé sera généré
+    "rootDir": "./src", // Dossier de vos fichiers sources .ts
+    "strict": true, // Active les vérifications de type strictes
+    "esModuleInterop": true, // Améliore la compatibilité avec les anciennes lib
+    "skipLibCheck": true // Accélère la compilation
+  },
+  "include": ["src/**/*"] // Compile uniquement le dossier src
+}
