@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import "dotenv/config";
 const MONGODB_URI: string | undefined = process.env.MONGODB_URI;
 
-export const connectDB = async () => {
+ const connectDB = async ():Promise<void> => {
   try {
     if (!MONGODB_URI) {
       throw new Error("MONGODB_URI is not defined");
@@ -14,3 +14,4 @@ export const connectDB = async () => {
     process.exit(1);
   }
 };
+export default connectDB;
