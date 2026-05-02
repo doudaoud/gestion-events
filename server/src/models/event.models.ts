@@ -17,3 +17,7 @@ export interface IEvent extends Document {
   createdAt: Date;
   updatedAt: Date;
 }
+
+export const eventSchema = new schema<IEvent>({
+  title: { type: String, required: true, minlength: 4, maxLength: 100 },
+});

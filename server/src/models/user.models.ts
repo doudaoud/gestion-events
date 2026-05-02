@@ -21,10 +21,10 @@ export interface IUser extends Document {
 
 const userSchema = new schema<IUser>(
   {
-    firstName: { type: String, required: true },
+    firstName: { type: String, required: true, max:50},
     lastName: { type: String, required: true },
     email: { type: String, required: true, unique: true },
-    passwordHash: { type: String, required: true },
+    passwordHash: { type: String, required: true , select: false },
     role: { type: String, enum: UserType, default: UserType.USER },
     avatar: { type: String },
     carteNationale: { type: String },
