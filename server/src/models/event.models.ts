@@ -1,4 +1,4 @@
-import { Schema as schema, Document, Types } from "mongoose";
+import mongoose, { Schema as schema, Document, Types, model } from "mongoose";
 export enum EventType {
   CONFERENCE = "conference",
   WORKSHOP = "workshop",
@@ -43,3 +43,6 @@ export const eventSchema = new schema<IEvent>(
   },
   { timestamps: true },
 );
+
+// export const Event = mongoose.model<IEvent>("Event", eventSchema);
+export const Event = model<IEvent>("Event", eventSchema);
