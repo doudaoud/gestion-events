@@ -1,4 +1,4 @@
-import mongoose, { Schema as schema, Document, Types, model } from "mongoose";
+import { Schema as schema, Document, Types, model } from "mongoose";
 export enum EventType {
   CONFERENCE = "conference",
   WORKSHOP = "workshop",
