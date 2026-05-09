@@ -1,7 +1,6 @@
 import express from "express";
 import "dotenv/config";
 import expressAsyncHandler from "express-async-handler";
-import jesonwebToken from "jsonwebtoken";
 import { User } from "../models/user.models.js";
 import { auditLogmodels, ActionType } from "../models/auditLog.models.js";
 import bcrypt from "bcrypt";
@@ -64,3 +63,10 @@ AuthRouter.post(
 );
 
 export default AuthRouter;
+
+/**
+ * @method POST
+ * @route /auth/register
+ * @despcription route pour linscription d'un utilisateur 
+ * @access public
+ */
