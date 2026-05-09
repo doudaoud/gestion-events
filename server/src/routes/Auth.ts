@@ -45,11 +45,11 @@ AuthRouter.post(
           .json({ message: "mot de passe incorrect", actionLog: new_action });
         return;
       }
-
+      
       //  TODO cree le token et le passeer pour la connxtion
       const secret_key: string | undefined = process.env.SECRET_KEY_JWT;
       const token: string = sign(
-        { userId: userexist._id },
+        { userId: userexist._id, role: userexist.role },
         secret_key as string,
         { expiresIn: "1h" },
       );
