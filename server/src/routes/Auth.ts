@@ -1,5 +1,7 @@
 import express from "express";
+import "dotenv/config";
 import expressAsyncHandler from "express-async-handler";
+import { sign } from "jsonwebtoken";
 import { User } from "../models/user.models.js";
 import { auditLogmodels, ActionType } from "../models/auditLog.models.js";
 import bcrypt from "bcrypt";
@@ -45,7 +47,16 @@ AuthRouter.post(
       }
 
       //  TODO cree le token et le passeer pour la connxtion
-      res.status(200).json({ message: "les infos de client sont juste" });
+      const secret_key: string | undefined = process.env.SECRET_KEY_JWT;
+      const token: string = sign(
+        { userId: userexist._id },
+        secret_key as string,
+        { expiresIn: "1h" },
+      );
+
+      res
+        .status(200)
+        .json({ message: "les infos de client sont juste", token });
       return;
     },
   ),
