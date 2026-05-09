@@ -39,7 +39,7 @@ const userSchema = new schema<IUser>(
 );
 export const User = model<IUser>("User", userSchema);
 
-export const userValidationSchemaRegister = Joi.object({
+ const userValidationSchemaRegister = Joi.object({
   firstName: Joi.string().required().max(50),
   lastName: Joi.string().required(),
   email: Joi.string().required().email(),
