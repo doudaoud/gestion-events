@@ -38,8 +38,8 @@ const userSchema = new schema<IUser>(
   },
 );
 export const User = model<IUser>("User", userSchema);
-
- const userValidationSchemaRegister = Joi.object({
+// TODO: ajouter les champs de verification et de role pour les users et les organisateurs   REGLER LE MEME SCHEMA 
+export const userValidationSchemaRegister = Joi.object({
   firstName: Joi.string().required().max(50),
   lastName: Joi.string().required(),
   email: Joi.string().required().email(),
