@@ -3,8 +3,9 @@ import "dotenv/config";
 import expressAsyncHandler from "express-async-handler";
 import { User } from "../models/user.models.js";
 import { auditLogmodels, ActionType } from "../models/auditLog.models.js";
+import { validateUserRegister } from "../models/user.models.js";
 import bcrypt from "bcrypt";
-import jsonWebToken from 'jsonwebtoken';
+import jsonWebToken from "jsonwebtoken";
 const AuthRouter: express.Router = express.Router();
 /**
  * @method POST
@@ -67,6 +68,20 @@ export default AuthRouter;
 /**
  * @method POST
  * @route /auth/register
- * @despcription route pour linscription d'un utilisateur 
+ * @despcription route pour linscription d'un utilisateur
  * @access public
  */
+
+AuthRouter.post(
+  "/Register",
+  expressAsyncHandler(
+    async (req: express.Request, res: express.Response): Promise<void> => {
+      const { error } = validateUserRegister(req.body);
+      if (error) {
+        res.status(400).json({ message: error.details[0].message });
+        return;
+      }
+      const clientInfoRegister = req.body;
+    },
+  ),
+);

@@ -1,4 +1,5 @@
 import mongoose, { Document, Schema as schema, model } from "mongoose";
+import Joi from "joi";
 export enum ActionType {
   inscreption = "INSCRIPTION",
   connexionSucees = "SUCCESS",
@@ -33,3 +34,6 @@ export const auditLogmodels = model<IAuditLog>(
     },
   ),
 );
+
+// validation des donner de user pour le login et le register
+

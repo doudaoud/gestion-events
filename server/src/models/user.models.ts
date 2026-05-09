@@ -1,3 +1,4 @@
+import Joi from "joi";
 import { Schema as schema, model, Document } from "mongoose";
 
 export enum UserType {
@@ -24,7 +25,7 @@ const userSchema = new schema<IUser>(
     firstName: { type: String, required: true, maxlength: 50 },
     lastName: { type: String, required: true },
     email: { type: String, required: true, unique: true },
-    passwordHash: { type: String, required: true , select: false },
+    passwordHash: { type: String, required: true, select: false },
     role: { type: String, enum: UserType, default: UserType.USER },
     avatar: { type: String },
     carteNationale: { type: String },
@@ -37,3 +38,16 @@ const userSchema = new schema<IUser>(
   },
 );
 export const User = model<IUser>("User", userSchema);
+
+export const userValidationSchemaRegister = Joi.object({
+  firstName: Joi.string().required().max(50),
+  lastName: Joi.string().required(),
+  email: Joi.string().required().email(),
+  password: Joi.string().required().min(6),
+});
+
+export function validateUserRegister(data: any) {
+  return userValidationSchemaRegister.validate(data);
+}
+
+
