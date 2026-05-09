@@ -1,10 +1,11 @@
 import express from "express";
 import "dotenv/config";
 import expressAsyncHandler from "express-async-handler";
-import { sign } from "jsonwebtoken";
+import jesonwebToken from "jsonwebtoken";
 import { User } from "../models/user.models.js";
 import { auditLogmodels, ActionType } from "../models/auditLog.models.js";
 import bcrypt from "bcrypt";
+import jsonWebToken from 'jsonwebtoken';
 const AuthRouter: express.Router = express.Router();
 /**
  * @method POST
@@ -45,10 +46,10 @@ AuthRouter.post(
           .json({ message: "mot de passe incorrect", actionLog: new_action });
         return;
       }
-      
-      //  TODO cree le token et le passeer pour la connxtion
+
+      //  TODO cree le token et le passeer pour la connxion
       const secret_key: string | undefined = process.env.SECRET_KEY_JWT;
-      const token: string = sign(
+      const token: string = jsonWebToken.sign(
         { userId: userexist._id, role: userexist.role },
         secret_key as string,
         { expiresIn: "1h" },
