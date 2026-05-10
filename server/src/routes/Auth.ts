@@ -9,6 +9,7 @@ import {
 } from "../models/user.models.js";
 import bcrypt from "bcrypt";
 import jsonWebToken from "jsonwebtoken";
+import {IUser} from "../models/user.models.js";
 const AuthRouter: express.Router = express.Router();
 /**
  * @method POST
@@ -91,6 +92,13 @@ AuthRouter.post(
         return;
       }
       const clientInfoRegister = req.body;
+      const userexist : IUser | null = await User.findOne({
+        email: clientInfoRegister.email,
+      });
+      if (userexist){
+        res.status(400).json({ message: "email deja existe" });
+        return;
+      }
     },
   ),
 );
