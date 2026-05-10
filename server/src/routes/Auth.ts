@@ -9,7 +9,7 @@ import {
 } from "../models/user.models.js";
 import bcrypt from "bcrypt";
 import jsonWebToken from "jsonwebtoken";
-import {IUser} from "../models/user.models.js";
+import { IUser } from "../models/user.models.js";
 const AuthRouter: express.Router = express.Router();
 /**
  * @method POST
@@ -92,13 +92,17 @@ AuthRouter.post(
         return;
       }
       const clientInfoRegister = req.body;
-      const userexist : IUser | null = await User.findOne({
+      const userexist: IUser | null = await User.findOne({
         email: clientInfoRegister.email,
       });
-      if (userexist){
+      if (userexist) {
         res.status(400).json({ message: "email deja existe" });
         return;
       }
+      const salt: string = await bcrypt.genSalt(10);
+      const passwordHash: string = await bcrypt.hash(clientInfoRegister, salt);
+      // TODO ne cree pas le user  directement a cause de la verification de email et de carte nationale dans le cas ou le user est organisateur
+      // TODO la carte nationale pour l'organizateur psq il ya un paeiment ddonc pour les arnaces
     },
   ),
 );
