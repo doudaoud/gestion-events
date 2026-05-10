@@ -15,7 +15,7 @@ export interface IUser extends Document {
   role: UserType;
   avatar?: string;
   carteNationale?: string;
-  verified: boolean;
+  verified?: boolean;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -53,8 +53,15 @@ export const userValidationSchemaRegister = Joi.object({
     .valid(...Object.values(UserType))
     .default(UserType.USER)
     .required(),
-  
 });
+export const userValidationSchemaLogin = Joi.object({
+  email: Joi.string().required().email(),
+  password: Joi.string().required().min(6),
+});
+
+export function validateUserLogin(data: any) {
+  return userValidationSchemaLogin.validate(data);
+}
 
 export function validateUserRegister(data: any) {
   return userValidationSchemaRegister.validate(data);
