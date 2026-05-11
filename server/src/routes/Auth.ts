@@ -103,6 +103,10 @@ AuthRouter.post(
       const passwordHash: string = await bcrypt.hash(clientInfoRegister, salt);
       // TODO ne cree pas le user  directement a cause de la verification de email et de carte nationale dans le cas ou le user est organisateur
       // TODO la carte nationale pour l'organizateur psq il ya un paeiment ddonc pour les arnaces
+      // jai rien fait toddaaaay fdonc garder le score /////// 
+
+
+      
       const code_verification: number | string = Math.floor(
         100000 + Math.random() * 900000,
       ).toString();
