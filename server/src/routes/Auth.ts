@@ -3,7 +3,7 @@ import "dotenv/config";
 import expressAsyncHandler from "express-async-handler";
 import { User } from "../models/user.models.js";
 import { auditLogmodels, ActionType } from "../models/auditLog.models.js";
-import {sendConfirmationEmail} from "../utils/serviceMail.js";
+import { sendConfirmationEmail } from "../utils/serviceMail.js";
 import {
   validateUserRegister,
   validateUserLogin,
@@ -21,7 +21,7 @@ const AuthRouter: express.Router = express.Router();
 
 AuthRouter.post(
   "/Login",
-  // TODO audir pour la connxion correct 
+  // TODO audir pour la connxion correct
   expressAsyncHandler(
     async (req: express.Request, res: express.Response): Promise<void> => {
       const clientInfoLogin = req.body;
@@ -60,7 +60,7 @@ AuthRouter.post(
       }
 
       //  TODO cree le token et le passeer pour la connxion
-      // TODO  le mail de confermation de la connexion pour le user et laudit pour la creation coreect 
+      // TODO  le mail de confermation de la connexion pour le user et laudit pour la creation coreect
       const secret_key: string | undefined = process.env.SECRET_KEY_JWT;
       const token: string = jsonWebToken.sign(
         { userId: userexist._id, role: userexist.role },
@@ -104,16 +104,13 @@ AuthRouter.post(
       }
       const salt: string = await bcrypt.genSalt(10);
       const passwordHash: string = await bcrypt.hash(clientInfoRegister, salt);
-      // TODO ne cree pas le user  directement a cause de la verification de email et de carte nationale dans le cas ou le user est organisateur 
+      // TODO ne cree pas le user  directement a cause de la verification de email et de carte nationale dans le cas ou le user est organisateur
       // TODO la carte nationale pour l'organizateur psq il ya un paeiment ddonc pour les arnaces
-      // jai rien fait toddaaaay fdonc garder le score /////// 
+      // jai rien fait toddaaaay fdonc garder le score ///////
 
-
-      
       const code_verification: number | string = Math.floor(
         100000 + Math.random() * 900000,
       ).toString();
-
     },
   ),
 );
