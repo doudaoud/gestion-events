@@ -108,7 +108,7 @@ AuthRouter.post(
       // TODO la carte nationale pour l'organizateur psq il ya un paeiment ddonc pour les arnaces
       // jai rien fait toddaaaay fdonc garder le score ///////
 
-      const code_verification: number | string = Math.floor(
+      let code_verification: number | string = Math.floor(
         100000 + Math.random() * 900000,
       ).toString();
     },
