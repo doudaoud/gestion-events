@@ -11,6 +11,7 @@ import {
 import bcrypt from "bcrypt";
 import jsonWebToken from "jsonwebtoken";
 import { IUser } from "../models/user.models.js";
+
 const AuthRouter: express.Router = express.Router();
 /**
  * @method POST
@@ -59,7 +60,6 @@ AuthRouter.post(
         return;
       }
 
-      //  TODO cree le token et le passeer pour la connxion
       // TODO  le mail de confermation de la connexion pour le user et laudit pour la creation coreect
       const secret_key: string | undefined = process.env.SECRET_KEY_JWT;
       const token: string = jsonWebToken.sign(
@@ -104,13 +104,35 @@ AuthRouter.post(
       }
       const salt: string = await bcrypt.genSalt(10);
       const passwordHash: string = await bcrypt.hash(clientInfoRegister, salt);
-      // TODO ne cree pas le user  directement a cause de la verification de email et de carte nationale dans le cas ou le user est organisateur
       // TODO la carte nationale pour l'organizateur psq il ya un paeiment ddonc pour les arnaces
-      // jai rien fait toddaaaay fdonc garder le score ///////
 
       let code_verification: number | string = Math.floor(
         100000 + Math.random() * 900000,
       ).toString();
+      sendConfirmationEmail(clientInfoRegister.email, code_verification);
+
+      // cree un tokern pour le register et et faire le truc de garger les infos de user dans le token
+      let new_user = new User(
+        {
+          firstName: clientInfoRegister.firstName,
+          lastName: clientInfoRegister.lastName,
+          email: clientInfoRegister.email,
+          passwordHash: passwordHash,
+          role: clientInfoRegister.role,
+        },
+        { timestamps: true },
+      );
+      let token_registerUser = jsonWebToken.sign(
+        new_user,
+        process.env.SECRET_KEY_JWT as string,
+        { expiresIn: "5m" },
+      );
+      res.status(200).json({
+        message: "inscription reussie, un mail de confirmation a été envoyé",
+        code_verification: code_verification,
+        token_registerUser: token_registerUser,
+      });
+      return;
     },
   ),
 );
