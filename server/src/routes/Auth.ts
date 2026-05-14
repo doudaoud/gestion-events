@@ -26,7 +26,7 @@ AuthRouter.post(
   expressAsyncHandler(
     async (req: express.Request, res: express.Response): Promise<void> => {
       const clientInfoLogin = req.body;
-      const {error} = validateUserLogin(clientInfoLogin);
+      const { error } = validateUserLogin(clientInfoLogin);
       if (error) {
         res.status(400).json({
           message: error.details[0].message,
@@ -69,7 +69,11 @@ AuthRouter.post(
       );
       const new_login = await auditLogmodels.create({
         action: ActionType.connexionSucees,
-      })
+        userID: userexist._id,
+        ipAddress: req.ip,
+      });
+      console.log(new_login);
+      
       res
         .status(200)
         .json({ message: "les infos de client sont juste", token });
