@@ -36,7 +36,7 @@ AuthRouter.post(
         email: clientInfoLogin.email,
       }).select("+passwordHash");
       if (!userexist) {
-        res.status(404).json({ message: "Utilisateur non trouvé" });
+        res.status(401).json({ message: "Email ou mot de passe incorrect" });
         return;
       }
       const password_correct: boolean = await bcrypt.compare(
@@ -56,7 +56,7 @@ AuthRouter.post(
         });
         res
           .status(401)
-          .json({ message: "mot de passe incorrect", actionLog: new_action });
+          .json({ message: "Email ou mot de passe incorrect" });
         return;
       }
 
@@ -107,7 +107,7 @@ AuthRouter.post(
         return;
       }
       const salt: string = await bcrypt.genSalt(10);
-      const passwordHash: string = await bcrypt.hash(clientInfoRegister, salt);
+      const passwordHash: string = await bcrypt.hash(clientInfoRegister.password, salt);
       // TODO la carte nationale pour l'organizateur psq il ya un paeiment ddonc pour les arnaces
 
       let code_verification: number | string = Math.floor(
@@ -123,17 +123,19 @@ AuthRouter.post(
           email: clientInfoRegister.email,
           passwordHash: passwordHash,
           role: clientInfoRegister.role,
-        },
-        { timestamps: true },
+        }
       );
+
+      // Sauvegarde de l'utilisateur en base de données avec verified: false (par défaut dans ton schéma)
+      await new_user.save();
+
       let token_registerUser = jsonWebToken.sign(
-        new_user,
+        { userId: new_user._id, role: new_user.role },
         process.env.SECRET_KEY_JWT as string,
         { expiresIn: "5m" },
       );
       res.status(200).json({
         message: "inscription reussie, un mail de confirmation a été envoyé",
-        code_verification: code_verification,
         token_registerUser: token_registerUser,
       });
       return;
