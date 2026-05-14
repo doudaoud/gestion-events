@@ -26,7 +26,7 @@ AuthRouter.post(
   expressAsyncHandler(
     async (req: express.Request, res: express.Response): Promise<void> => {
       const clientInfoLogin = req.body;
-      const { error } = validateUserLogin(clientInfoLogin);
+      const {error} = validateUserLogin(clientInfoLogin);
       if (error) {
         res.status(400).json({
           message: error.details[0].message,
