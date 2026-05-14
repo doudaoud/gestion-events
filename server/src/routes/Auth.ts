@@ -67,7 +67,9 @@ AuthRouter.post(
         secret_key as string,
         { expiresIn: "1h" },
       );
-
+      const new_login = await auditLogmodels.create({
+        action: ActionType.connexionSucees,
+      })
       res
         .status(200)
         .json({ message: "les infos de client sont juste", token });
@@ -75,8 +77,6 @@ AuthRouter.post(
     },
   ),
 );
-
-export default AuthRouter;
 
 /**
  * @method POST
@@ -136,3 +136,4 @@ AuthRouter.post(
     },
   ),
 );
+export default AuthRouter;
