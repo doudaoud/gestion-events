@@ -1,16 +1,39 @@
 import React from "react";
 import logo from "../../assets/screen.png";
+import { ThemeProvider } from "@mui/material/styles";
+import { Link } from "react-router-dom";
+import Button from "@mui/material/Button";
+import theme from "../themes/theme";
+import "./styles/home.css";
 
-export default function Home() : React.ReactNode {
+export default function Home(): React.ReactNode {
   return (
     <React.Fragment>
       {/* navbar */}
       <nav>
         <div className="left">
-          <img src={logo} alt="logo de notre app " />
+          <img
+            src={logo}
+            alt="logo de notre app"
+            style={{
+              width: "50px",
+              height: "50px",
+            }}
+          />
+          <p>Gestion Events</p>
         </div>
-        <div className="middle"></div>
-        <div className="right"></div>
+        <div className="middle">
+          <a href="">Discover</a>
+          <a href=""> Schedule</a>
+          <a href="">Pricing</a>
+          <a href="">Support </a>
+        </div>
+        <div className="right">
+          <Link to={"/signIn"}>Sign in</Link>
+          <ThemeProvider theme={theme}>
+            <Button variant="contained">Create Event</Button>
+          </ThemeProvider>
+        </div>
       </nav>
       {/* navbar */}
     </React.Fragment>
