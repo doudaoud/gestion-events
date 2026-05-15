@@ -1,7 +1,9 @@
-import React from 'react'
+import React from "react";
 
 export default function Home() {
   return (
-    <div>Home</div>
-  )
+    <React.Fragment>
+      <h1>this is the home page the page of accueil</h1>
+    </React.Fragment>
+  );
 }

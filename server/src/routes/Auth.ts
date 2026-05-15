@@ -139,7 +139,7 @@ AuthRouter.post(
         token_registerUser: token_registerUser,
       });
       return;
-    },
+    }, 
   ),
 );
 export default AuthRouter;
