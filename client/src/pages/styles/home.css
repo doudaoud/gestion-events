@@ -3,7 +3,14 @@ nav {
   height: 80px;
   display: flex;
   flex-flow: row nowrap;
-  justify-content:space-between ;
+  justify-content: space-around;
   align-items: center;
   background-color: red;
+}
+.left {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 10px;
+  align-items: center;
+
 }
