@@ -5,12 +5,37 @@ nav {
   flex-flow: row nowrap;
   justify-content: space-around;
   align-items: center;
-  background-color: red;
+  /* background-color: red; */
+  box-shadow: 0px 0.1px 10px rgb(62, 62, 62);
+  z-index: 100;
 }
 .left {
   display: flex;
   flex-flow: row nowrap;
   gap: 10px;
   align-items: center;
+}
+.middle {
+  display: flex;
 
+  gap: 15px;
+}
+
+.middle > a {
+  transition: all 0.2s ease;
+  
+}
+
+
+
+.middle > a:hover {
+  color: rgb(96, 99, 238);
+  text-decoration: underline  ;
+}
+
+.right {
+  display: flex;
+  /* flex-flow: row nowrap; */
+  align-items: center;
+  gap: 15px;
 }
