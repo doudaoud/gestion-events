@@ -36,6 +36,20 @@ export default function Home(): React.ReactNode {
         </div>
       </nav>
       {/* navbar */}
+      {/* header de la page home */}
+      <header>
+        <div className="titles">
+          <h1>
+            Empower Your <span>Events</span>
+          </h1>
+          <p>
+            The authoritative platform for logistical precision and vibrant live
+            experiences. Coordinater manage, and scale your events with
+            effortless sophistication.
+          </p>
+        </div>
+      </header>
+      {/* header de la page home */}
     </React.Fragment>
   );
 }

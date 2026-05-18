@@ -32,7 +32,7 @@ nav {
 }
 
 .middle > a::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 100%;
   transform: scaleX(0);
@@ -61,12 +61,42 @@ nav {
 .right > a {
   /* color: rgb(96, 99, 238); */
   transition: all 0.2s ease;
-
 }
 .right > a:hover {
   color: rgb(96, 99, 238);
   /* transition: all 0.2s ease; */
+}
 
+header {
+  /* background-color: rgb(231, 232, 251); */
+  background-image: linear-gradient(
+    to right,
+    rgb(232, 233, 251),
+    rgb(248, 249, 255)
+  );
+}
+
+header .titles {
+  text-align: center;
+  padding: 6rem 2rem; /* Ajoute de l'espace en haut et en bas du header */
+}
+
+header .titles h1 {
+  font-size: 3.5rem; /* Agrandit le titre */
+  color: #222; /* Couleur de base du texte */
+  margin-bottom: 1.5rem; /* Ajoute un espace entre le titre et le paragraphe */
+}
+
+header .titles h1 span {
+  color: rgb(96, 99, 238); /* Met le mot "Events" dans la couleur de la charte graphique */
+}
+
+header .titles p {
+  font-size: 1.2rem; /* Agrandit légèrement le texte de description */
+  color: #555;
+  max-width: 700px; /* Limite la largeur du paragraphe pour une meilleure lisibilité */
+  margin: 0 auto; /* Centre le paragraphe horizontalement */
+  line-height: 1.6; /* Améliore l'espacement entre les lignes */
 }
 
 /* Styles pour le bouton hamburger (sera visible sur mobile uniquement) */
