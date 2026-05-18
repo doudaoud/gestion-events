@@ -22,15 +22,29 @@ nav {
 }
 
 .middle > a {
-  transition: all 0.2s ease;
-  
+  transition: color 0.2s ease;
+  position: relative;
+  text-decoration: none;
 }
 
+.middle > a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: rgb(96, 99, 238);
+  transform-origin: bottom left;
+  transition: transform 0.25s ease-out;
+}
 
-
+.middle > a:hover::after {
+  transform: scaleX(1);
+}
 .middle > a:hover {
   color: rgb(96, 99, 238);
-  text-decoration: underline  ;
 }
 
 .right {
