@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 import theme from "../themes/theme";
 import "./styles/home.css";
+import SearchBar from "../components/Searchbar";
 
 export default function Home(): React.ReactNode {
   return (
@@ -48,6 +49,14 @@ export default function Home(): React.ReactNode {
             effortless sophistication.
           </p>
         </div>
+        <div style={{
+          marginTop:-50,
+          marginBottom:50
+        }}>
+          <SearchBar/>
+
+        </div>
+       
       </header>
       {/* header de la page home */}
     </React.Fragment>

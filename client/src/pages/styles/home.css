@@ -77,8 +77,9 @@ header {
 }
 
 header .titles {
+  margin-top: 11px;
   text-align: center;
-  padding: 6rem 2rem; /* Ajoute de l'espace en haut et en bas du header */
+  padding-bottom: 100px; 
 }
 
 header .titles h1 {
