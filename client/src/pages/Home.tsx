@@ -11,32 +11,36 @@ export default function Home(): React.ReactNode {
   return (
     <React.Fragment>
       {/* navbar */}
-      <nav>
-        <div className="left">
-          <img
-            src={logo}
-            alt="logo de notre app"
-            style={{
-              width: "50px",
-              height: "50px",
-            }}
-          />
-          <p>Gestion Events</p>
-        </div>
-        <div className="middle">
-          <a href="">Discover</a>
-          <a href=""> Schedule</a>
-          <a href="">Pricing</a>
-          <a href="">Support </a>
-        </div>
-        <div className="right">
-          <Link to={"/signIn"}>Sign in</Link>
-          <ThemeProvider theme={theme}>
-            <Button variant="contained">Create Event</Button>
-          </ThemeProvider>
-        </div>
-      </nav>
-      {/* navbar */}
+      <div style={{
+        marginBottom:"100px"
+      }}>
+        <nav>
+          <div className="left">
+            <img
+              src={logo}
+              alt="logo de notre app"
+              style={{
+                width: "50px",
+                height: "50px",
+              }}
+            />
+            <p>Gestion Events</p>
+          </div>
+          <div className="middle">
+            <a href="">Discover</a>
+            <a href=""> Schedule</a>
+            <a href="">Pricing</a>
+            <a href="">Support </a>
+          </div>
+          <div className="right">
+            <Link to={"/signIn"}>Sign in</Link>
+            <ThemeProvider theme={theme}>
+              <Button variant="contained">Create Event</Button>
+            </ThemeProvider>
+          </div>
+        </nav>
+        {/* navbar */}
+      </div>
       {/* header de la page home */}
       <header>
         <div className="titles">
@@ -55,18 +59,19 @@ export default function Home(): React.ReactNode {
             marginBottom: 50,
           }}
         >
-          <div style={{
-            marginBottom:"30px"
-          }}>
-          <SearchBar />
-
+          <div
+            style={{
+              marginBottom: "30px",
+            }}
+          >
+            <SearchBar />
           </div>
           <div
             style={{
               display: "flex",
               flexFlow: "row wrap",
               justifyContent: "center",
-              marginBottom:"20px"
+              marginBottom: "20px",
             }}
           >
             {" "}
