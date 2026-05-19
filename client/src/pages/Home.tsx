@@ -49,14 +49,38 @@ export default function Home(): React.ReactNode {
             effortless sophistication.
           </p>
         </div>
-        <div style={{
-          marginTop:-50,
-          marginBottom:50
-        }}>
-          <SearchBar/>
+        <div
+          style={{
+            marginTop: -50,
+            marginBottom: 50,
+          }}
+        >
+          <div style={{
+            marginBottom:"30px"
+          }}>
+          <SearchBar />
 
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexFlow: "row wrap",
+              justifyContent: "center",
+              marginBottom:"20px"
+            }}
+          >
+            {" "}
+            <img
+              src="../../assets/unnamed.png"
+              alt="event image"
+              style={{
+                height: "280px",
+                width: "654px",
+                borderRadius: "15px",
+              }}
+            />
+          </div>
         </div>
-       
       </header>
       {/* header de la page home */}
     </React.Fragment>

@@ -74,6 +74,7 @@ header {
     rgb(232, 233, 251),
     rgb(248, 249, 255)
   );
+  padding-bottom: 0.2px;
 }
 
 header .titles {
