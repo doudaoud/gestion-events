@@ -83,7 +83,6 @@ header {
   z-index: -10;
   direction: rtl;
   /* height: 100px; */
-  
 }
 
 header .titles {
@@ -197,4 +196,50 @@ header .titles p {
   .mobile-nav-links.open {
     transform: translateX(0);
   }
+}
+
+.navbar-container {
+  margin-bottom: 100px;
+}
+
+.logo-img {
+  width: 50px;
+  height: 50px;
+}
+
+.search-section {
+  margin-top: -50px;
+  margin-bottom: 50px;
+}
+
+.searchbar-container {
+  margin-bottom: 30px;
+}
+
+.searchbar-wrapper {
+  direction: ltr;
+}
+
+.event-image-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.event-image {
+  height: 280px;
+  width: 654px;
+  border-radius: 15px;
+}
+
+.decorative-box {
+  height: 300px;
+  width: 300px;
+  background-color: red;
+  position: absolute;
+  border-radius: 20px;
+  top: 440px;
+  right: 6px;
+  background-image: linear-gradient(to top left , rgb(224, 249, 243) 0% , rgb(246, 247, 255) 80%);
 }

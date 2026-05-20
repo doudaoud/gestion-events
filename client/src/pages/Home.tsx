@@ -1,5 +1,6 @@
 import React from "react";
 import logo from "../../assets/screen.png";
+import eventImage from "../../assets/unnamed.png";
 import { ThemeProvider } from "@mui/material/styles";
 import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
@@ -11,20 +12,13 @@ export default function Home(): React.ReactNode {
   return (
     <React.Fragment>
       {/* navbar */}
-      <div
-        style={{
-          marginBottom: "100px",
-        }}
-      >
+      <div style={{ marginBottom: "100px" }}>
         <nav>
           <div className="left">
             <img
               src={logo}
               alt="logo de notre app"
-              style={{
-                width: "50px",
-                height: "50px",
-              }}
+              style={{ width: "50px", height: "50px" }}
             />
             <p>Gestion Events</p>
           </div>
@@ -41,8 +35,9 @@ export default function Home(): React.ReactNode {
             </ThemeProvider>
           </div>
         </nav>
-        {/* navbar */}
       </div>
+      {/* navbar */}
+
       {/* header de la page home */}
       <header>
         <div className="titles">
@@ -51,25 +46,20 @@ export default function Home(): React.ReactNode {
           </h1>
           <p>
             The authoritative platform for logistical precision and vibrant live
-            experiences. Coordinater manage, and scale your events with
+            experiences. Coordinate, manage, and scale your events with
             effortless sophistication.
           </p>
         </div>
-        <div
-          style={{
-            marginTop: -50,
-            marginBottom: 50,
-          }}
-        >
-          <div
-            style={{
-              marginBottom: "30px",
-            }}
-          >
+
+        {/* SearchBar */}
+        <div style={{ marginTop: -50, marginBottom: 50 }}>
+          <div style={{ marginBottom: "30px" }}>
             <div style={{ direction: "ltr" }}>
               <SearchBar />
             </div>
           </div>
+
+          {/* Image principale */}
           <div
             style={{
               display: "flex",
@@ -78,18 +68,20 @@ export default function Home(): React.ReactNode {
               marginBottom: "20px",
             }}
           >
-            {" "}
             <img
-              src="../../assets/unnamed.png"
+              src={eventImage}
               alt="event image"
               style={{
                 height: "280px",
                 width: "654px",
                 borderRadius: "15px",
+                objectFit: "cover",
               }}
             />
           </div>
         </div>
+
+        {/* Decorative box */}
         <div
           style={{
             height: 300,
@@ -99,7 +91,8 @@ export default function Home(): React.ReactNode {
             borderRadius: "20px",
             top: "440px",
             right: "6px",
-            backgroundImage:"linear-gradient(to top left , rgb(224, 249, 243) 0% , rgb(246, 247, 255) 80%)"
+            backgroundImage:
+              "linear-gradient(to top left , rgb(224, 249, 243) 0% , rgb(246, 247, 255) 80%)",
           }}
         ></div>
       </header>
