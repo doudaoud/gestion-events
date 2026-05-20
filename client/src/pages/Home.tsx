@@ -52,10 +52,10 @@ export default function Home(): React.ReactNode {
             <p>Gestion Events</p>
           </div>
           <div className="middle">
-            <a href="">Discover</a>
-            <a href=""> Schedule</a>
-            <a href="">Pricing</a>
-            <a href="">Support</a>
+            <a href="#events">Discover</a>
+            <a href="#events">Schedule</a>
+            <a href="#features">Pricing</a>
+            <a href="#contact">Support</a>
           </div>
           <div className="right">
             <Link to={"/signIn"}>Sign in</Link>
@@ -67,7 +67,7 @@ export default function Home(): React.ReactNode {
       </div>
 
       {/* ── Hero ── */}
-      <header>
+      <header id="part1"  >
         <div className="titles">
           <h1>
             Empower Your <span>Events</span>
@@ -110,7 +110,7 @@ export default function Home(): React.ReactNode {
       </header>
 
       {/* ── Popular Upcoming Events ── */}
-      <section className="events-section">
+      <section id="events" className="events-section">
         <div className="events-section-header">
           <div>
             <h2 className="section-title">Popular Upcoming Events</h2>
@@ -149,7 +149,7 @@ export default function Home(): React.ReactNode {
       </section>
 
       {/* ── Why Choose Gestion Events ── */}
-      <section className="features-section">
+      <section id="features" className="features-section">
         <div className="features-header">
           <h2 className="section-title">Why Choose Gestion Events?</h2>
           <p className="section-subtitle">
@@ -229,7 +229,7 @@ export default function Home(): React.ReactNode {
       </section>
 
       {/* ── CTA Section ── */}
-      <section className="cta-section">
+      <section id="contact" className="cta-section">
         <div className="cta-card">
           <h2 className="cta-title">Ready to transform your events?</h2>
           <p className="cta-subtitle">
