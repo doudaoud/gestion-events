@@ -97,6 +97,23 @@ export default function Home(): React.ReactNode {
         ></div>
       </header>
       {/* header de la page home */}
+      {/* partie events dans la page de home */}
+
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <div>
+          <h3>Popular Upcoming Events</h3>
+          <p>Handpicked experiences happening in your area soon.</p>
+        </div>
+        <Link to={"/event"}> View all events &rarr; </Link>
+      </div>
+
+      {/* partie events dans la page de home */}
     </React.Fragment>
   );
 }
