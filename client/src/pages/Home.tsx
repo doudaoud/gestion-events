@@ -11,9 +11,11 @@ export default function Home(): React.ReactNode {
   return (
     <React.Fragment>
       {/* navbar */}
-      <div style={{
-        marginBottom:"100px"
-      }}>
+      <div
+        style={{
+          marginBottom: "100px",
+        }}
+      >
         <nav>
           <div className="left">
             <img
@@ -64,7 +66,9 @@ export default function Home(): React.ReactNode {
               marginBottom: "30px",
             }}
           >
-            <SearchBar />
+            <div style={{ direction: "ltr" }}>
+              <SearchBar />
+            </div>
           </div>
           <div
             style={{
@@ -86,6 +90,18 @@ export default function Home(): React.ReactNode {
             />
           </div>
         </div>
+        <div
+          style={{
+            height: 300,
+            width: 300,
+            backgroundColor: "red",
+            position: "absolute",
+            borderRadius: "20px",
+            top: "440px",
+            right: "6px",
+            backgroundImage:"linear-gradient(to top left , rgb(224, 249, 243) 0% , rgb(246, 247, 255) 80%)"
+          }}
+        ></div>
       </header>
       {/* header de la page home */}
     </React.Fragment>
