@@ -7,6 +7,7 @@ import Button from "@mui/material/Button";
 import theme from "../themes/theme";
 import "./styles/home.css";
 import SearchBar from "../components/Searchbar";
+import Usestate3events from "./hooks/Usestate3events";
 
 export default function Home(): React.ReactNode {
   return (
@@ -98,19 +99,26 @@ export default function Home(): React.ReactNode {
       </header>
       {/* header de la page home */}
       {/* partie events dans la page de home */}
+      <div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            textAlign: "center",
+            width: "85%",
+            margin: "auto",
 
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        <div>
-          <h3>Popular Upcoming Events</h3>
-          <p>Handpicked experiences happening in your area soon.</p>
+            // backgroundColor:"red"
+          }}
+        >
+          <div>
+            <h3>Popular Upcoming Events</h3>
+            <p>Handpicked experiences happening in your area soon.</p>
+          </div>
+          <Link to={"/event"}> View all events &rarr; </Link>
         </div>
-        <Link to={"/event"}> View all events &rarr; </Link>
+        <Usestate3events/>
       </div>
 
       {/* partie events dans la page de home */}
