@@ -114,7 +114,7 @@ export default function Home(): React.ReactNode {
         >
           <div>
             <h3>Popular Upcoming Events</h3>
-            <p>Handpicked experiences happening in your area soon.</p>
+            <p>Handpiicked experiences happening in your area soon.</p>
           </div>
           <Link to={"/event"}> View all events &rarr; </Link>
         </div>
