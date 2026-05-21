@@ -7,13 +7,12 @@ nav {
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
-  /* background-color: red; */
   box-shadow: 0px 0.1px 10px rgb(62, 62, 62);
   position: fixed;
-  /* margin-bottom: 100px; */
+  top: 0;
+  left: 0;
   z-index: 100;
-background-color: white;
-margin-top: -100px;
+  background-color: white;
 }
 .left {
   display: flex;
@@ -72,41 +71,38 @@ margin-top: -100px;
 }
 
 header {
-  /* background-color: rgb(231, 232, 251); */
+  position: relative;
   background-image: linear-gradient(
     to right,
     rgb(232, 233, 251),
     rgb(248, 249, 255)
   );
-  /* margin-top: -10px; */
-  padding-bottom: 0.2px;
-  z-index: -10;
-  direction: rtl;
-  /* height: 100px; */
+  padding-bottom: 40px;
+  overflow: hidden; /* Empêche la boîte de dépasser et causer un scroll horizontal */
 }
 
 header .titles {
-  margin-top: 11px;
   text-align: center;
-  padding-bottom: 100px; 
+  /* La padding top de 100px permet au titre de ne pas être caché par la navbar fixe de 80px */
+  padding: 100px 1.5rem 60px; 
 }
 
 header .titles h1 {
-  font-size: 3.5rem; /* Agrandit le titre */
-  color: #222; /* Couleur de base du texte */
-  margin-bottom: 1.5rem; /* Ajoute un espace entre le titre et le paragraphe */
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: #222;
+  margin-bottom: 1.2rem;
 }
 
 header .titles h1 span {
-  color: rgb(96, 99, 238); /* Met le mot "Events" dans la couleur de la charte graphique */
+  color: rgb(96, 99, 238);
 }
 
 header .titles p {
-  font-size: 1.2rem; /* Agrandit légèrement le texte de description */
+  font-size: clamp(0.95rem, 2vw, 1.2rem);
   color: #555;
-  max-width: 700px; /* Limite la largeur du paragraphe pour une meilleure lisibilité */
-  margin: 0 auto; /* Centre le paragraphe horizontalement */
-  line-height: 1.6; /* Améliore l'espacement entre les lignes */
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
 }
 
 /* Styles pour le bouton hamburger (sera visible sur mobile uniquement) */
@@ -123,6 +119,7 @@ header .titles p {
   z-index: 1001; /* Pour être sûr qu'il est au-dessus des autres éléments */
 }
 .hamburger-menu .bar {
+  display: block;
   width: 2rem;
   height: 0.25rem;
   background: #333; /* Couleur des barres, à adapter selon votre design */
@@ -142,64 +139,9 @@ header .titles p {
 .hamburger-menu.open .bar:nth-child(3) {
   transform: translateY(-8px) rotate(-45deg);
 }
-@media screen and (max-width: 768px) {
-  nav {
-    /* On garde la nav en ligne, mais on espace le logo et le menu */
-    justify-content: space-between;
-    padding: 0 2rem;
-  }
-
-  .hamburger-menu {
-    display: flex; /* On affiche le bouton hamburger sur mobile */
-  }
-
-  /* On cache les liens sur la barre de navigation par défaut sur mobile */
-  nav > .middle,
-  nav > .right {
-    display: none;
-  }
-
-  /* Styles pour le menu qui s'ouvrira en plein écran */
-  .mobile-nav-links {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; /* Aligne les éléments en haut */
-    align-items: center; /* Centre les éléments horizontalement */
-    padding-top: 100px; /* Espace en haut pour ne pas être caché par la nav */
-    gap: 4rem; /* Espace entre les liens et les icônes */
-    transform: translateX(100%); /* Caché sur la droite par défaut */
-    transition: transform 0.3s ease-in-out;
-    z-index: 1000;
-  }
-
-  /* Affiche les sections .middle et .right dans le menu mobile */
-  .mobile-nav-links > .middle,
-  .mobile-nav-links > .right {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-  }
-
-  /* Agrandit la police des liens pour une meilleure lisibilité et interaction */
-  .mobile-nav-links > .middle a {
-    font-size: 1.8rem;
-  }
-
-  /* Classe 'open' pour faire apparaître le menu */
-  .mobile-nav-links.open {
-    transform: translateX(0);
-  }
-}
-
-.navbar-container {
-  margin-bottom: 100px;
+/* End of hamburger menu styles */
+.navbar-spacer {
+  height: 80px;
 }
 
 .logo-img {
@@ -220,28 +162,25 @@ header .titles p {
   direction: ltr;
 }
 
-.event-image-container {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.event-image {
-  height: 280px;
-  width: 654px;
-  border-radius: 15px;
-}
+/* Old unused image styles removed */
 
 .decorative-box {
   height: 300px;
   width: 300px;
-  background-color: red;
   position: absolute;
   border-radius: 20px;
-  top: 440px;
-  right: 6px;
+  bottom: -30px;
+  right: -30px;
   background-image: linear-gradient(to top left , rgb(224, 249, 243) 0% , rgb(246, 247, 255) 80%);
+  z-index: 0;
+}
+
+/* On s'assure que le contenu du header passe par-dessus la boîte décorative */
+header .titles,
+.searchbar-container,
+.hero-img-wrapper {
+  position: relative;
+  z-index: 2;
 }
 
 /* ========================================
@@ -692,48 +631,196 @@ header .titles p {
 }
 
 /* ========================================
-   RESPONSIVE
+   NAV AND HERO COMPONENT STYLES
 ======================================== */
-@media screen and (max-width: 900px) {
+.nav-signin-link {
+  font-weight: 600;
+  color: #111827;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+.nav-signin-link:hover {
+  color: rgb(96, 99, 238);
+}
+
+.hero-img-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  padding: 0 1.5rem;
+}
+.hero-img {
+  width: 100%;
+  max-width: 654px;
+  height: 280px;
+  border-radius: 15px;
+  object-fit: cover;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* ========================================
+   RESPONSIVE — TABLET (≤ 1024px)
+======================================== */
+@media screen and (max-width: 1024px) {
   .events-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-content {
     grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .cta-card {
+    max-width: 90%;
+    padding: 48px 36px;
+  }
+}
+
+/* ========================================
+   RESPONSIVE — SMALL TABLET (≤ 768px)
+======================================== */
+@media screen and (max-width: 768px) {
+  /* Navbar */
+  nav > .middle,
+  nav > .right {
+    display: none;
+  }
+
+  .hamburger-menu {
+    display: flex;
+  }
+
+  .mobile-nav-links {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 120px;
+    gap: 3rem;
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 90;
+  }
+
+  .mobile-nav-links.open {
+    transform: translateX(0);
+  }
+
+  .mobile-nav-links .middle,
+  .mobile-nav-links .right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .mobile-nav-links .middle a {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #111827;
+  }
+
+  header .titles {
+    padding: 30px 1rem 60px;
+  }
+
+  .decorative-box {
+    display: none;
+  }
+
+  .events-section {
+    padding: 0 1rem;
+    margin: 40px auto;
+  }
+
+  .events-section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .features-section {
+    padding: 50px 1rem;
   }
 
   .features-grid {
     grid-template-columns: 1fr;
   }
 
+  .features-small-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .cta-section {
+    padding: 40px 1rem;
+  }
+
+  .cta-card {
+    max-width: 100%;
+    padding: 40px 24px;
+    border-radius: 18px;
+  }
+
+  .site-footer {
+    padding: 40px 1.5rem 0;
+  }
+
   .footer-content {
     grid-template-columns: 1fr 1fr;
+    gap: 28px;
   }
 }
 
-@media screen and (max-width: 600px) {
-  .events-grid {
-    grid-template-columns: 1fr;
+/* ========================================
+   RESPONSIVE — MOBILE (≤ 480px)
+======================================== */
+@media screen and (max-width: 480px) {
+  nav {
+    padding: 0 1rem;
   }
 
-  .events-section-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
+  header .titles h1 {
+    font-size: 2rem;
+  }
+
+  header .titles p {
+    font-size: 1rem;
+  }
+
+  .hero-img {
+    height: 180px;
+  }
+
+  .events-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 
   .features-small-grid {
     grid-template-columns: 1fr;
   }
 
-  .cta-card {
-    padding: 36px 24px;
+  .cta-buttons {
+    flex-direction: column;
   }
 
-  .cta-title {
-    font-size: 1.5rem;
+  .cta-btn {
+    width: 100%;
+    text-align: center;
   }
 
   .footer-content {
     grid-template-columns: 1fr;
-    gap: 28px;
+    gap: 24px;
   }
 }
-

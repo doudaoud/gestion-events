@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../../assets/screen.png";
 import eventImage from "../../assets/unnamed.png";
 import techSummit from "../../assets/event_tech_summit.png";
@@ -42,10 +42,12 @@ const events = [
 ];
 
 export default function Home(): React.ReactNode {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
     <React.Fragment>
       {/* ── Navbar ── */}
-      <div style={{ marginBottom: "100px" }}>
+      <div className="navbar-spacer">
         <nav>
           <div className="left">
             <img src={logo} alt="logo" style={{ width: "50px", height: "50px" }} />
@@ -58,12 +60,38 @@ export default function Home(): React.ReactNode {
             <a href="#contact">Support</a>
           </div>
           <div className="right">
-            <Link to={"/signIn"}>Sign in</Link>
+            <Link to={"/signIn"} className="nav-signin-link">Sign in</Link>
             <ThemeProvider theme={theme}>
-              <Button variant="contained">Create Event</Button>
+              <Button variant="contained" className="nav-create-btn" sx={{ textTransform: 'none', borderRadius: '8px', fontWeight: 600 }}>Create Event</Button>
             </ThemeProvider>
           </div>
+          
+          {/* Hamburger Icon */}
+          <button 
+            className={`hamburger-menu ${mobileMenuOpen ? 'open' : ''}`} 
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            <span className="bar"></span>
+            <span className="bar"></span>
+            <span className="bar"></span>
+          </button>
         </nav>
+
+        {/* Mobile Dropdown Menu */}
+        <div className={`mobile-nav-links ${mobileMenuOpen ? 'open' : ''}`}>
+          <div className="middle">
+            <a href="#events" onClick={() => setMobileMenuOpen(false)}>Discover</a>
+            <a href="#events" onClick={() => setMobileMenuOpen(false)}>Schedule</a>
+            <a href="#features" onClick={() => setMobileMenuOpen(false)}>Pricing</a>
+            <a href="#contact" onClick={() => setMobileMenuOpen(false)}>Support</a>
+          </div>
+          <div className="right">
+            <Link to={"/signIn"} className="nav-signin-link" onClick={() => setMobileMenuOpen(false)}>Sign in</Link>
+            <ThemeProvider theme={theme}>
+              <Button variant="contained" className="nav-create-btn" sx={{ textTransform: 'none', borderRadius: '8px', fontWeight: 600 }} onClick={() => setMobileMenuOpen(false)}>Create Event</Button>
+            </ThemeProvider>
+          </div>
+        </div>
       </div>
 
       {/* ── Hero ── */}
@@ -85,28 +113,12 @@ export default function Home(): React.ReactNode {
               <SearchBar />
             </div>
           </div>
-          <div style={{ display: "flex", justifyContent: "center", marginBottom: "20px" }}>
-            <img
-              src={eventImage}
-              alt="event image"
-              style={{ height: "280px", width: "654px", borderRadius: "15px", objectFit: "cover" }}
-            />
+          <div className="hero-img-wrapper">
+            <img src={eventImage} alt="event image" className="hero-img" />
           </div>
         </div>
 
-        <div
-          style={{
-            height: 300,
-            width: 300,
-            backgroundColor: "red",
-            position: "absolute",
-            borderRadius: "20px",
-            top: "440px",
-            right: "6px",
-            backgroundImage:
-              "linear-gradient(to top left , rgb(224, 249, 243) 0% , rgb(246, 247, 255) 80%)",
-          }}
-        ></div>
+        <div className="decorative-box"></div>
       </header>
 
       {/* ── Popular Upcoming Events ── */}
