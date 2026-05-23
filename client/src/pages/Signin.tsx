@@ -1,10 +1,29 @@
 import { Fragment } from "react";
+import { account } from "../components/appwrite";
+import { ID } from "appwrite";
+import axios from "axios";
+export default function Signin(): React.ReactNode {
+  const handelLoginWithgoogle = async () => {
+    try {
+      let emailInput;
+      let passwordInput;
+      let nameInput;
 
-
-export default function Signin ():React.ReactNode {
-  return (
-    <Fragment>
-        {/* <div>hello</div> */}
-    </Fragment>
-  )
+      const userLoginMail = await account.create(
+        ID.unique(),
+        emailInput,
+        passwordInput,
+        nameInput,
+      );
+      console.log("Utilisateur créé avec succès:", userLoginMail);
+      axios.post("", {
+        email: emailInput,
+        password: passwordInput,
+        name: nameInput,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  return <Fragment></Fragment>;
 }
