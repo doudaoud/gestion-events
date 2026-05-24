@@ -5,7 +5,7 @@ import axios from "axios";
 import EmailIcon from "@mui/icons-material/Email";
 import LockIcon from "@mui/icons-material/Lock";
 import { Link } from "react-router-dom";
-
+import VisibilityIcon from "@mui/icons-material/Visibility";
 export default function Signin(): React.ReactNode {
   const handelLoginWithgoogle = async () => {
     try {
@@ -38,6 +38,7 @@ export default function Signin(): React.ReactNode {
     gap: "20px",
     marginTop: "100px",
   };
+  const type: boolean = false;
   return (
     <Fragment>
       <div style={styling} className="container_form_signin">
@@ -80,9 +81,13 @@ export default function Signin(): React.ReactNode {
             <span>
               <LockIcon />
             </span>
-            <input type="password" placeholder="Votre mot de passe">
-            </input>
-
+            <input
+              type={type ? "password" : "text"}
+              placeholder="Votre mot de passe"
+            ></input>
+            <span>
+              <VisibilityIcon />
+            </span>
           </div>
         </div>
       </div>
