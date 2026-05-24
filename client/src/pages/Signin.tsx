@@ -2,8 +2,9 @@ import { Fragment } from "react";
 import { account } from "../components/appwrite";
 import { ID } from "appwrite";
 import axios from "axios";
-import TextField from "@mui/material/TextField";
-import InputAdornment from "@mui/material/InputAdornment";
+import EmailIcon from "@mui/icons-material/Email";
+import LockIcon from "@mui/icons-material/Lock";
+import { Link } from "react-router-dom";
 
 export default function Signin(): React.ReactNode {
   const handelLoginWithgoogle = async () => {
@@ -48,8 +49,41 @@ export default function Signin(): React.ReactNode {
         <div className="form_signin">
           <h2>welcome back</h2>
           <p>log in to manage your premium events and attendes.</p>
-          <TextField label="Email" variant="outlined" />
-          <TextField label="password" variant="outlined" />
+          {/* <TextField
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <EmailIcon />
+                </InputAdornment>
+              ),
+            }}
+            label="Email"
+            variant="outlined"
+          />
+          <TextField label="password" variant="outlined" /> */}
+          <label htmlFor="">Address e-mail</label>
+          <div>
+            <span>
+              <EmailIcon />
+            </span>
+            <input type="email" placeholder="Votre email"></input>
+          </div>
+          <div>
+            <label>Password</label>
+            <Link to="/forgot-password" className="forgot_password">
+              Forgot password?
+            </Link>{" "}
+            //todo link to forgot password page
+          </div>
+
+          <div className="">
+            <span>
+              <LockIcon />
+            </span>
+            <input type="password" placeholder="Votre mot de passe">
+            </input>
+
+          </div>
         </div>
       </div>
     </Fragment>
