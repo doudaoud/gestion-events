@@ -16,10 +16,10 @@ export default function Signin(): React.ReactNode {
     password: "",
   });
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
+    const { id, value } = e.target;
     setForm({
       ...form,
-      [name]: value,
+      [id]: value,
     });
   };
   return (
@@ -69,6 +69,8 @@ export default function Signin(): React.ReactNode {
                 type={showPassword ? "text" : "password"}
                 id="password"
                 placeholder="Votre mot de passe"
+                value={form.password}
+                onChange={handleChange}
               />
               <span
                 className="input-icon-right"
