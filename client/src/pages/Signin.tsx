@@ -6,6 +6,7 @@ import EmailIcon from "@mui/icons-material/Email";
 import LockIcon from "@mui/icons-material/Lock";
 import { Link } from "react-router-dom";
 import VisibilityIcon from "@mui/icons-material/Visibility";
+import googleIcon from "../icons/google.png";
 export default function Signin(): React.ReactNode {
   const handelLoginWithgoogle = async () => {
     try {
@@ -89,7 +90,17 @@ export default function Signin(): React.ReactNode {
               <VisibilityIcon />
             </span>
           </div>
+          <button>Sign in</button>
+
         </div>
+        <hr />
+        <p>or continue with</p>
+        <button onClick={handelLoginWithgoogle} className="btn_google"> <img src={googleIcon} alt="google icon" style={{
+          width: "20px",
+          height: "20px",
+          marginRight: "10px",
+          display: "inline-block"
+        }} /> Google</button>
       </div>
     </Fragment>
   );
