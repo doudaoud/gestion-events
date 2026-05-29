@@ -3,13 +3,15 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import Home from "../src/pages/Home";
 import Signin from "../src/pages/Signin";
 import "./App.css";
+import Signup from "./pages/Signup";
 export default function App(): React.ReactElement {
   return (
     <React.Fragment>
       <Routes>
         <Route path="/" element={<Navigate to="/home" />} />
-        <Route path ="/home" element ={ <Home />} />
-        <Route path ="/signIn" element ={ <Signin />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/signIn" element={<Signin />} />
+        <Route path="/signUp" element={<Signup />} />
       </Routes>
     </React.Fragment>
   );
