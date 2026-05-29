@@ -6,11 +6,22 @@ import LockIcon from "@mui/icons-material/Lock";
 import { Link } from "react-router-dom";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+
 import "./styles/signin.css";
 
 export default function Signin(): React.ReactNode {
   const [showPassword, setShowPassword] = useState(false);
-
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+  });
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setForm({
+      ...form,
+      [name]: value,
+    });
+  };
   return (
     <Fragment>
       <div className="container_form_signin">
@@ -19,9 +30,8 @@ export default function Signin(): React.ReactNode {
             src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXRpY2tldC1pY29uIGx1Y2lkZS10aWNrZXQiPjxwYXRoIGQ9Ik0yIDlhMyAzIDAgMCAxIDAgNnYyYTIgMiAwIDAgMCAyIDJoMTZhMiAyIDAgMCAwIDItMnYtMmEzIDMgMCAwIDEgMC02VjdhMiAyIDAgMCAwLTItMkg0YTIgMiAwIDAgMC0yIDJaIi8+PHBhdGggZD0iTTEzIDV2MiIvPjxwYXRoIGQ9Ik0xMyAxN3YyIi8+PHBhdGggZD0iTTEzIDExdjIiLz48L3N2Zz4="
             alt="icon ticket"
           />
-          <h2>Gestion des événements</h2>
         </div>
-
+        <h2 className="logo-container">Gestion des événements</h2>
         <div className="form_signin">
           <div className="form-header">
             <h2>Welcome back</h2>
@@ -34,7 +44,13 @@ export default function Signin(): React.ReactNode {
               <span className="input-icon">
                 <EmailIcon fontSize="small" />
               </span>
-              <input type="email" id="email" placeholder="Votre email" />
+              <input
+                type="email"
+                id="email"
+                value={form.email}
+                onChange={handleChange}
+                placeholder="Votre email"
+              />
             </div>
           </div>
 
