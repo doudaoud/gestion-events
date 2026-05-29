@@ -2,10 +2,15 @@ import { createApp } from "./config/app.js";
 import "dotenv/config";
 import express from "express";
 import AuthRouter from "./routes/Auth.js";
-
+import cors from "cors";
 const app: express.Express = createApp();
 const PORT: string | undefined = process.env.PORT;
 
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+  }),
+);
 app.use("/auth", AuthRouter);
 // app.use("/booking", bookingRoutes);
 // app.use("/user", userRoutes);

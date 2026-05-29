@@ -56,7 +56,7 @@ AuthRouter.post(
         });
         res
           .status(401)
-          .json({ message: "Email ou mot de passe incorrect" });
+          .json({ message: "Email ou mot de passe incorrect", new_action });
         return;
       }
 
@@ -73,7 +73,7 @@ AuthRouter.post(
         ipAddress: req.ip,
       });
       console.log(new_login);
-      
+
       res
         .status(200)
         .json({ message: "les infos de client sont juste", token });
@@ -107,7 +107,10 @@ AuthRouter.post(
         return;
       }
       const salt: string = await bcrypt.genSalt(10);
-      const passwordHash: string = await bcrypt.hash(clientInfoRegister.password, salt);
+      const passwordHash: string = await bcrypt.hash(
+        clientInfoRegister.password,
+        salt,
+      );
       // TODO la carte nationale pour l'organizateur psq il ya un paeiment ddonc pour les arnaces
 
       let code_verification: number | string = Math.floor(
@@ -116,15 +119,13 @@ AuthRouter.post(
       sendConfirmationEmail(clientInfoRegister.email, code_verification);
 
       // cree un tokern pour le register et et faire le truc de garger les infos de user dans le token
-      let new_user = new User(
-        {
-          firstName: clientInfoRegister.firstName,
-          lastName: clientInfoRegister.lastName,
-          email: clientInfoRegister.email,
-          passwordHash: passwordHash,
-          role: clientInfoRegister.role,
-        }
-      );
+      let new_user = new User({
+        firstName: clientInfoRegister.firstName,
+        lastName: clientInfoRegister.lastName,
+        email: clientInfoRegister.email,
+        passwordHash: passwordHash,
+        role: clientInfoRegister.role,
+      });
 
       // Sauvegarde de l'utilisateur en base de données avec verified: false (par défaut dans ton schéma)
       await new_user.save();
@@ -139,7 +140,7 @@ AuthRouter.post(
         token_registerUser: token_registerUser,
       });
       return;
-    }, 
+    },
   ),
 );
 export default AuthRouter;
