@@ -16,7 +16,28 @@ export default function Signup(): React.ReactNode {
       >
         <div className="image-form-signup">
           <img src={imageSignup} alt="image for signup form " />
+          <div
+            className="write-image"
+            style={{
+              backgroundColor: "rgb(192, 194, 220)",
+              color: "white",
+              alignSelf: "flex-start",
+              width: "400px",
+              borderRadius: "9px",
+              position: "relative",
+              top: "-125px",
+              left: "10%",
+              padding: "20px",
+            }}
+          >
+            <h2>Seamless Logistics.</h2>
+            <p>
+              Experience the world's most intutive platform for event organizers
+              and creative directors
+            </p>
+          </div>
         </div>
+
         <div
           style={{
             color: "white",
