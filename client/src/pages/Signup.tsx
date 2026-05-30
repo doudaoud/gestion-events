@@ -38,15 +38,34 @@ export default function Signup(): React.ReactNode {
           </div>
         </div>
 
-        <div
-          style={{
-            color: "white",
-            backgroundColor: "rgb(96, 99, 238)",
-            width: "max-content",
-            borderRadius: "9px",
+        <div className="form-signup">
+          <div
+            style={{
+              display: "inline-block",
+              color: "white",
+              backgroundColor: "rgb(96, 99, 238)",
+              width: "max-content",
+              borderRadius: "9px",
+            }}
+          >
+            <DomainVerificationIcon fontSize="large" />
+          </div>
+          <div
+            style={{
+              display: "inline-block",
+              fontSize: "18px",
+              fontWeight: "bold",
+              color: "rgb(96, 99, 238)",
+              marginLeft: "12px",
+              marginTop: "3px",
+            }}
+          >
+            <h2>Gestion Events</h2>
+          </div>
+          <h1 style={{
+            
           }}
-        >
-          <DomainVerificationIcon fontSize="large" />
+          >Create your account</h1>
         </div>
       </div>
     </React.Fragment>
