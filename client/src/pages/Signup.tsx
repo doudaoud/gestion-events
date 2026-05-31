@@ -15,7 +15,29 @@ export default function Signup(): React.ReactNode {
         }}
       >
         <div className="image-form-signup">
-          <img src={imageSignup} alt="image for signup form " />
+          <div
+            style={{
+              position: "relative",
+              overflow: "hidden",
+              borderRadius: "12px",
+            }}
+          >
+            <img
+              src={imageSignup}
+              alt="image for signup form"
+              style={{ display: "block", width: "100%" }}
+            />
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                background:
+                  "linear-gradient(to top, hsl(238, 50%, 43%) 1%, transparent)",
+                zIndex: 1,
+                pointerEvents: "none",
+              }}
+            />
+          </div>
           <div
             className="write-image"
             style={{
@@ -28,6 +50,7 @@ export default function Signup(): React.ReactNode {
               top: "-125px",
               left: "10%",
               padding: "20px",
+              zIndex: 2,
             }}
           >
             <h2>Seamless Logistics.</h2>
