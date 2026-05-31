@@ -61,7 +61,13 @@ export default function Signup(): React.ReactNode {
           </div>
         </div>
 
-        <div className="form-signup">
+        <div
+          className="form-signup"
+          style={{
+            display: "flex",
+            flexFlow: "column wrap",
+          }}
+        >
           <div
             style={{
               display: "inline-block",
