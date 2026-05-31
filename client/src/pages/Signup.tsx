@@ -62,10 +62,29 @@ export default function Signup(): React.ReactNode {
           >
             <h2>Gestion Events</h2>
           </div>
-          <h1 style={{
-            
-          }}
-          >Create your account</h1>
+          <h1>Create your account</h1>
+          <p>
+            Join thousands of organizers managing high-profile live experiences.
+          </p>
+          <form className="signup-form">
+            <label htmlFor="Full Name">Full Name</label>
+            <input type="text" id="Full Name" placeholder="ex : Alex Morgan " />
+            <label htmlFor="Email">Email</label>
+            <input type="email" id="Email" placeholder="name@copany.com" />
+            <label htmlFor="Password">Password</label>
+            <div>
+              <input
+                type="password"
+                name=""
+                id="Password"
+                placeholder="........"
+              />
+              <p>
+                Must be at least 8 characters, including uppercase, lowercase,
+                number, and symbol.
+              </p>
+            </div>
+          </form>
         </div>
       </div>
     </React.Fragment>
