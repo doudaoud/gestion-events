@@ -1,12 +1,12 @@
 import React, { useState, type ChangeEvent } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import imageSignup from "../../assets/signup (1).png";
 import DomainVerificationIcon from "@mui/icons-material/DomainVerification";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import "./styles/signup.css";
-import axios from "axios";
+// import axios from "axios";
 
 export default function Signup(): React.ReactNode {
   const [showPassword, setShowPassword] = useState(false);
@@ -16,7 +16,7 @@ export default function Signup(): React.ReactNode {
     password: "",
     agreeTerms: false,
   });
-
+  const navigate = useNavigate();
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
     setFormData((prev) => ({
@@ -64,20 +64,11 @@ export default function Signup(): React.ReactNode {
                 formData.password &&
                 formData.agreeTerms
               ) {
-                // alert("Form submitted successfully!");
-                try {
-                  const response = await axios.post(
-                    "http://localhost:3000/api/auth/Register",
-                    formData,
-                  );
-                  if (response.status === 200) {
-                    alert("Form submitted successfully!");
-                  }
-                } catch (error) {
-                  console.error("Error submitting form:", error);
-                }
+                //
+                localStorage.setItem("user", JSON.stringify(formData));
+                navigate("2");
               } else {
-                alert("Please fill in all required fields.");
+                //
               }
             }}
           >
@@ -157,6 +148,7 @@ export default function Signup(): React.ReactNode {
           </p>
         </div>
       </div>
+    
     </div>
   );
 }
