@@ -95,7 +95,7 @@ export default function Signup(): React.ReactNode {
           <p>
             Join thousands of organizers managing high-profile live experiences.
           </p>
-          <form className="signup-form">
+          <form className="signup-form" onSubmit={(e) => e.preventDefault()}>
             <label htmlFor="Full Name">Full Name</label>
             <input type="text" id="Full Name" placeholder="ex : Alex Morgan " />
             <label htmlFor="Email">Email</label>
@@ -113,6 +113,10 @@ export default function Signup(): React.ReactNode {
                 number, and symbol.
               </p>
             </div>
+            <input type="checkbox" />I agree to the{" "}
+            <a href="">Terms of Service</a>
+            and <a href="">Privacy Policy</a>
+            <input type="submit" value="Create Account" />
           </form>
         </div>
       </div>
