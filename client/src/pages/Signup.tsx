@@ -55,15 +55,29 @@ export default function Signup(): React.ReactNode {
             experiences.
           </p>
 
-          <form onSubmit={(e) => {
-            e.preventDefault();
-            if (formData.fullName && formData.email && formData.password && formData.agreeTerms) {
-              alert("Form submitted successfully!");
-            }
-            else {
-              alert("Please fill in all required fields.");
-            }
-          } }>
+          <form
+            onSubmit={async (e) => {
+              e.preventDefault();
+              if (
+                formData.fullName &&
+                formData.email &&
+                formData.password &&
+                formData.agreeTerms
+              ) {
+                // alert("Form submitted successfully!");
+                try {
+                  const response = await axios.post("", formData);
+                  if (response.status === 200) {
+                    alert("Form submitted successfully!");
+                  }
+                } catch (error) {
+                  console.error("Error submitting form:", error);
+                }
+              } else {
+                alert("Please fill in all required fields.");
+              }
+            }}
+          >
             <div className="signup-field">
               <label htmlFor="fullName">Full Name</label>
               <input
