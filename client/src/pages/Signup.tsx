@@ -1,125 +1,100 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import imageSignup from "../../assets/signup (1).png";
 import DomainVerificationIcon from "@mui/icons-material/DomainVerification";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import "./styles/signup.css";
+
 export default function Signup(): React.ReactNode {
+  const [showPassword, setShowPassword] = useState(false);
+
   return (
-    <React.Fragment>
-      <div
-        className="container_form_signup"
-        style={{
-          width: "100vw",
-          height: "100vh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <div className="image-form-signup">
-          <div
-            style={{
-              position: "relative",
-              overflow: "hidden",
-              borderRadius: "12px",
-            }}
-          >
-            <img
-              src={imageSignup}
-              alt="image for signup form"
-              style={{ display: "block", width: "100%" }}
-            />
-            <div
-              style={{
-                position: "absolute",
-                inset: 0,
-                background:
-                  "linear-gradient(to top, hsl(238, 50%, 43%) 1%, transparent)",
-                zIndex: 1,
-                pointerEvents: "none",
-              }}
-            />
-          </div>
-          <div
-            className="write-image"
-            style={{
-              backgroundColor: "rgb(192, 194, 220)",
-              color: "white",
-              alignSelf: "flex-start",
-              width: "400px",
-              borderRadius: "9px",
-              position: "relative",
-              top: "-125px",
-              left: "10%",
-              padding: "20px",
-              zIndex: 2,
-            }}
-          >
+    <div className="signup-page">
+      <div className="signup-card">
+        {/* Left: image */}
+        <div className="signup-image-panel">
+          <img src={imageSignup} alt="event stage" />
+          <div className="signup-image-overlay" />
+          <div className="signup-image-text">
             <h2>Seamless Logistics.</h2>
             <p>
-              Experience the world's most intutive platform for event organizers
-              and creative directors
+              Experience the world's most intuitive platform for event organizers
+              and creative directors.
             </p>
           </div>
         </div>
 
-        <div
-          className="form-signup"
-          style={{
-            display: "flex",
-            flexFlow: "column wrap",
-          }}
-        >
-          <div
-            style={{
-              display: "inline-block",
-              color: "white",
-              backgroundColor: "rgb(96, 99, 238)",
-              width: "max-content",
-              borderRadius: "9px",
-            }}
-          >
-            <DomainVerificationIcon fontSize="large" />
+        {/* Right: form */}
+        <div className="signup-form-panel">
+          <div className="signup-logo">
+            <div className="signup-logo-icon">
+              <DomainVerificationIcon fontSize="small" />
+            </div>
+            <span className="signup-logo-name">Gestion Events</span>
           </div>
-          <div
-            style={{
-              display: "inline-block",
-              fontSize: "18px",
-              fontWeight: "bold",
-              color: "rgb(96, 99, 238)",
-              marginLeft: "12px",
-              marginTop: "3px",
-            }}
-          >
-            <h2>Gestion Events</h2>
-          </div>
+
           <h1>Create your account</h1>
-          <p>
-            Join thousands of organizers managing high-profile live experiences.
+          <p className="signup-subtitle">
+            Join thousands of organizers managing{" "}
+            <span>high-profile</span> live experiences.
           </p>
-          <form className="signup-form" onSubmit={(e) => e.preventDefault()}>
-            <label htmlFor="Full Name">Full Name</label>
-            <input type="text" id="Full Name" placeholder="ex : Alex Morgan " />
-            <label htmlFor="Email">Email</label>
-            <input type="email" id="Email" placeholder="name@copany.com" />
-            <label htmlFor="Password">Password</label>
-            <div>
-              <input
-                type="password"
-                name=""
-                id="Password"
-                placeholder="........"
-              />
-              <p>
-                Must be at least 8 characters, including uppercase, lowercase,
-                number, and symbol.
+
+          <form onSubmit={(e) => e.preventDefault()}>
+            <div className="signup-field">
+              <label htmlFor="fullName">Full Name</label>
+              <input type="text" id="fullName" placeholder="Alex Morgan" />
+            </div>
+
+            <div className="signup-field">
+              <label htmlFor="email">Email Address</label>
+              <input type="email" id="email" placeholder="name@company.com" />
+            </div>
+
+            <div className="signup-field">
+              <label htmlFor="password">Password</label>
+              <div className="signup-password-wrapper">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  id="password"
+                  placeholder="••••••••"
+                />
+                <button
+                  type="button"
+                  className="signup-eye-btn"
+                  onClick={() => setShowPassword((v) => !v)}
+                >
+                  {showPassword ? (
+                    <VisibilityOffIcon fontSize="small" />
+                  ) : (
+                    <VisibilityIcon fontSize="small" />
+                  )}
+                </button>
+              </div>
+              <p className="signup-password-hint">
+                Must be at least 8 characters long.
               </p>
             </div>
-            <input type="checkbox" />I agree to the{" "}
-            <a href="">Terms of Service</a>
-            and <a href="">Privacy Policy</a>
-            <input type="submit" value="Create Account" />
+
+            <div className="signup-terms">
+              <input type="checkbox" id="terms" />
+              <label htmlFor="terms">
+                I agree to the <a href="#">Terms of Service</a> and{" "}
+                <a href="#">Privacy Policy</a>.
+              </label>
+            </div>
+
+            <button type="submit" className="signup-btn">
+              Create Account <ArrowForwardIcon fontSize="small" />
+            </button>
           </form>
+
+          <p className="signup-signin-link">
+            Already have an account? <Link to="/signin">Sign In</Link>
+          </p>
         </div>
       </div>
-    </React.Fragment>
+    </div>
   );
 }
