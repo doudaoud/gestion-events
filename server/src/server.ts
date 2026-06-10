@@ -11,7 +11,7 @@ app.use(
     origin: "http://localhost:5173",
   }),
 );
-app.use("/auth", AuthRouter);
+app.use("/api/auth", AuthRouter);
 // app.use("/booking", bookingRoutes);
 // app.use("/user", userRoutes);
 

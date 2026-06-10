@@ -66,7 +66,10 @@ export default function Signup(): React.ReactNode {
               ) {
                 // alert("Form submitted successfully!");
                 try {
-                  const response = await axios.post("", formData);
+                  const response = await axios.post(
+                    "http://localhost:3000/api/auth/Register",
+                    formData,
+                  );
                   if (response.status === 200) {
                     alert("Form submitted successfully!");
                   }

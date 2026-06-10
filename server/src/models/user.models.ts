@@ -13,9 +13,9 @@ export interface IUser extends Document {
   email: string;
   passwordHash: string;
   role: UserType;
-  avatar?: string;
-  carteNationale?: string;
-  verified?: boolean;
+  avatar: string | null;
+  carteNationale: string | null;
+  verified: boolean;
   createdAt: Date;
   updatedAt: Date;
 }
