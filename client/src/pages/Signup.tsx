@@ -55,7 +55,15 @@ export default function Signup(): React.ReactNode {
             experiences.
           </p>
 
-          <form onSubmit={(e) => e.preventDefault()}>
+          <form onSubmit={(e) => {
+            e.preventDefault();
+            if (formData.fullName && formData.email && formData.password && formData.agreeTerms) {
+              alert("Form submitted successfully!");
+            }
+            else {
+              alert("Please fill in all required fields.");
+            }
+          } }>
             <div className="signup-field">
               <label htmlFor="fullName">Full Name</label>
               <input
