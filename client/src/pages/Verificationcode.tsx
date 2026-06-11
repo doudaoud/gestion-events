@@ -4,46 +4,71 @@ export default function Verificationcode() {
   return (
     <>
       <div
-        className="verification-form"
         style={{
           display: "flex",
-          flexFlow: "column wrap",
           justifyContent: "center",
           alignItems: "center",
-          height: "100vh",
+          minHeight: "100vh",
         }}
       >
         <div
-          className="check-icon"
+          className="verification-form"
           style={{
-            backgroundColor: "rgb(99, 102, 241)",
-            // borderRadius: "50%",
-            height: "40px",
-            width: "40px",
-            borderRadius: "10px",
+            width: "500px",
+
+            display: "flex",
+            flexFlow: "column wrap",
+
+            justifyContent: "center",
+            alignItems: "center",
+            height: "auto",
           }}
         >
-          <CheckCircleIcon
+          <div
+            className="check-icon"
             style={{
-              color: "white",
-              marginLeft: "7px",
-              marginTop: "6px",
-              
-              //   fontWeight:"bold",
-              //   height:"30px"
+              backgroundColor: "rgb(99, 102, 241)",
+              // borderRadius: "50%",
+              height: "40px",
+              width: "40px",
+              borderRadius: "10px",
             }}
-          />
-        </div>
-        <h2 style={{
-            color:"rgb(99, 102, 241)", 
-            fontSize:"18px",
-            fontWeight:"bold"   
-        }} >
+          >
+            <CheckCircleIcon
+              style={{
+                color: "white",
+                marginLeft: "7px",
+                marginTop: "6px",
+              }}
+            />
+          </div>
+          <h2
+            style={{
+              color: "rgb(99, 102, 241)",
+              fontSize: "18px",
+              fontWeight: "bold",
+            }}
+          >
             Gestion Events
-        </h2>
-        <h1>
+          </h2>
+          <h1
+            style={{
+              color: "black",
+              fontSize: "24px",
+              fontWeight: "bold",
+            }}
+          >
             Verify your email
-        </h1>
+          </h1>
+          <p
+            style={{
+              width: "70%",
+            }}
+          >
+            We•ve sent a 6-digit verification code to alex.design@example.com.
+            Please enter it below.
+          </p>
+        </div>
       </div>
     </>
   );
