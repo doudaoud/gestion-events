@@ -15,13 +15,14 @@ export default function Verificationcode() {
           className="verification-form"
           style={{
             width: "500px",
+            height: "700px",
 
             display: "flex",
             flexFlow: "column wrap",
-
+            backgroundColor: "red",
             justifyContent: "center",
             alignItems: "center",
-            height: "auto",
+            // height: "auto",
           }}
         >
           <div
@@ -60,14 +61,27 @@ export default function Verificationcode() {
           >
             Verify your email
           </h1>
-          <p
+          <div
             style={{
-              width: "70%",
+              //   width: "70%",
+              display: "flex",
+              justifyContent: "center",
+              backgroundColor: "white",
+                // margin:"auto"
             }}
           >
-            We•ve sent a 6-digit verification code to alex.design@example.com.
-            Please enter it below.
-          </p>
+            <p
+              style={{
+                width: "80%",
+               textAlign:"center"
+                // display: "flex",
+                // justifyContent: "center",
+              }}
+            >
+              We•ve sent a 6-digit verification code to alex.design@example.com.
+              Please enter it below.
+            </p>
+          </div>
         </div>
       </div>
     </>
