@@ -28,13 +28,21 @@ export default function Verificationcode() {
               color: "white",
               marginLeft: "7px",
               marginTop: "6px",
+              
               //   fontWeight:"bold",
               //   height:"30px"
             }}
           />
         </div>
-        <h1>
+        <h2 style={{
+            color:"rgb(99, 102, 241)", 
+            fontSize:"18px",
+            fontWeight:"bold"   
+        }} >
             Gestion Events
+        </h2>
+        <h1>
+            Verify your email
         </h1>
       </div>
     </>
