@@ -126,6 +126,7 @@ export default function Verificationcode() {
                 paddingBottom:"10px",
                 paddingRight:"120px",
                 paddingLeft:"120px",
+                borderRadius: "10px",
               }}
             >
               {" "}
