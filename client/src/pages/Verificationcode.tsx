@@ -127,6 +127,9 @@ export default function Verificationcode() {
                 paddingLeft: "120px",
                 borderRadius: "10px",
                 border: "none",
+                fontSize: "16px",
+                fontWeight: "bold",
+                cursor: "pointer",
               }}
             >
               verify&rarr;
