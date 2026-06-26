@@ -59,7 +59,6 @@ export default function Verificationcode() {
               fontWeight: "bold",
               marginTop: "50px",
               textAlign: "center",
-              
             }}
           >
             Verify your email
@@ -122,16 +121,15 @@ export default function Verificationcode() {
               style={{
                 color: "white",
                 backgroundColor: "rgb(70, 72, 212)",
-                paddingTop:"10px",
-                paddingBottom:"10px",
-                paddingRight:"120px",
-                paddingLeft:"120px",
+                paddingTop: "10px",
+                paddingBottom: "10px",
+                paddingRight: "120px",
+                paddingLeft: "120px",
                 borderRadius: "10px",
                 border: "none",
               }}
             >
-              {" "}
-              verify&rarr;{" "}
+              verify&rarr;
             </button>
           </div>
         </div>
