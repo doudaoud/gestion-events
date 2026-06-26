@@ -22,7 +22,6 @@ export default function Verificationcode() {
             backgroundColor: "red",
             justifyContent: "center",
             alignItems: "center",
-            // height: "auto",
           }}
         >
           <div
@@ -33,6 +32,7 @@ export default function Verificationcode() {
               height: "40px",
               width: "40px",
               borderRadius: "10px",
+              marginTop: "-150px",
             }}
           >
             <CheckCircleIcon
@@ -48,6 +48,7 @@ export default function Verificationcode() {
               color: "rgb(99, 102, 241)",
               fontSize: "18px",
               fontWeight: "bold",
+              // marginTop:"200px"
             }}
           >
             Gestion Events
@@ -57,25 +58,21 @@ export default function Verificationcode() {
               color: "black",
               fontSize: "24px",
               fontWeight: "bold",
+              marginTop: "50px",
             }}
           >
             Verify your email
           </h1>
           <div
             style={{
-              //   width: "70%",
               display: "flex",
               justifyContent: "center",
-              // backgroundColor: "white",
-                // margin:"auto"
             }}
           >
             <p
               style={{
-                width: "80%",
+                width: "60%",
                textAlign:"center"
-                // display: "flex",
-                // justifyContent: "center",
               }}
             >
               We•ve sent a 6-digit verification code to alex.design@example.com.
