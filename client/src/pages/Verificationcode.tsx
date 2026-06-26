@@ -119,6 +119,24 @@ export default function Verificationcode() {
               )}
             />
           </div>
+          <div className="button verifiy">
+            <button
+              style={{
+                color: "white",
+                backgroundColor: "rgb(70, 72, 212)",
+                // height: "20px",
+                // width:"80px"
+                paddingTop:"10px",
+                paddingBottom:"10px",
+                paddingRight:"120px",
+                paddingLeft:"120px",
+                bor
+              }}
+            >
+              {" "}
+              verify&rarr;{" "}
+            </button>
+          </div>
         </div>
       </div>
     </>
