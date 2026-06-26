@@ -58,6 +58,8 @@ export default function Verificationcode() {
               fontSize: "24px",
               fontWeight: "bold",
               marginTop: "50px",
+              textAlign: "center",
+              
             }}
           >
             Verify your email
@@ -125,6 +127,7 @@ export default function Verificationcode() {
                 paddingRight:"120px",
                 paddingLeft:"120px",
                 borderRadius: "10px",
+                border: "none",
               }}
             >
               {" "}
