@@ -66,7 +66,7 @@ export default function Verificationcode() {
               //   width: "70%",
               display: "flex",
               justifyContent: "center",
-              backgroundColor: "white",
+              // backgroundColor: "white",
                 // margin:"auto"
             }}
           >
