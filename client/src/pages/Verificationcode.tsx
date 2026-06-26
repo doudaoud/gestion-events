@@ -19,10 +19,8 @@ export default function Verificationcode() {
           style={{
             width: "500px",
             height: "700px",
-
             display: "flex",
             flexFlow: "column wrap",
-            // backgroundColor: "red",
             justifyContent: "center",
             alignItems: "center",
           }}
