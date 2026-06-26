@@ -31,7 +31,6 @@ export default function Verificationcode() {
             className="check-icon"
             style={{
               backgroundColor: "rgb(99, 102, 241)",
-              // borderRadius: "50%",
               height: "40px",
               width: "40px",
               borderRadius: "10px",
@@ -51,7 +50,6 @@ export default function Verificationcode() {
               color: "rgb(99, 102, 241)",
               fontSize: "18px",
               fontWeight: "bold",
-              // marginTop:"200px"
             }}
           >
             Gestion Events
@@ -124,13 +122,10 @@ export default function Verificationcode() {
               style={{
                 color: "white",
                 backgroundColor: "rgb(70, 72, 212)",
-                // height: "20px",
-                // width:"80px"
                 paddingTop:"10px",
                 paddingBottom:"10px",
                 paddingRight:"120px",
                 paddingLeft:"120px",
-                bor
               }}
             >
               {" "}
