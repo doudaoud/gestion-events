@@ -1,6 +1,9 @@
 import React from "react";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import OtpInput from "react-otp-input";
+import { useState } from "react";
 export default function Verificationcode() {
+  const [opt, setOpt] = useState("");
   return (
     <>
       <div
@@ -72,12 +75,27 @@ export default function Verificationcode() {
             <p
               style={{
                 width: "60%",
-               textAlign:"center"
+                textAlign: "center",
               }}
             >
               We•ve sent a 6-digit verification code to alex.design@example.com.
               Please enter it below.
             </p>
+          </div>
+          <div
+            style={{
+              backgroundColor: "white",
+              padding: "20px",
+              borderRadius: "10px",
+            }}
+          >
+            <OtpInput
+              numInputs={6}
+              value={opt}
+              onChange={setOpt}
+             
+              renderInput={(props) => <input {...props} className="otp-case" />}
+            />
           </div>
         </div>
       </div>
