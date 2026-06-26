@@ -22,7 +22,7 @@ export default function Verificationcode() {
 
             display: "flex",
             flexFlow: "column wrap",
-            backgroundColor: "red",
+            // backgroundColor: "red",
             justifyContent: "center",
             alignItems: "center",
           }}
@@ -93,8 +93,30 @@ export default function Verificationcode() {
               numInputs={6}
               value={opt}
               onChange={setOpt}
-             
-              renderInput={(props) => <input {...props} className="otp-case" />}
+              containerStyle={{ gap: "10px" }}
+              renderInput={(props) => (
+                <input
+                  {...props}
+                  className="otp-case"
+                  style={{
+                    width: "45px",
+                    height: "50px",
+                    fontSize: "20px",
+                    fontWeight: "bold",
+                    textAlign: "center",
+                    color: "rgb(99, 102, 241)",
+                    border: "2px solid #d1d5db",
+                    borderRadius: "8px",
+                    outline: "none",
+                  }}
+                  onFocus={(e) => {
+                    e.target.style.border = "2px solid rgb(99, 102, 241)";
+                  }}
+                  onBlur={(e) => {
+                    e.target.style.border = "2px solid #d1d5db";
+                  }}
+                />
+              )}
             />
           </div>
         </div>
