@@ -1,4 +1,5 @@
 import React from "react";
+import "./styles/verification.css";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import OtpInput from "react-otp-input";
 import { useState } from "react";
@@ -117,23 +118,7 @@ export default function Verificationcode() {
             />
           </div>
           <div className="button verifiy">
-            <button
-              style={{
-                color: "white",
-                backgroundColor: "rgb(70, 72, 212)",
-                paddingTop: "10px",
-                paddingBottom: "10px",
-                paddingRight: "120px",
-                paddingLeft: "120px",
-                borderRadius: "10px",
-                border: "none",
-                fontSize: "16px",
-                fontWeight: "bold",
-                cursor: "pointer",
-              }}
-            >
-              verify&rarr;
-            </button>
+            <button className="verify-button">verify&rarr;</button>
           </div>
         </div>
       </div>
