@@ -25,6 +25,7 @@ export default function Verificationcode() {
             value={otp}
             onChange={setOtp}
             containerStyle="otp-container"
+            skipDefaultStyles
             renderInput={(props) => <input {...props} className="otp-case" />}
           />
         </div>
