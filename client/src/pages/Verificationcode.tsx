@@ -29,7 +29,7 @@ export default function Verificationcode() {
             renderInput={(props) => <input {...props} className="otp-case" />}
           />
         </div>
-        <div className="button verify">
+        <div className="button-wrapper">
           <button type="button" className="verify-button">
             verify&rarr;
           </button>

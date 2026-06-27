@@ -3,42 +3,53 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  padding: 24px;
+  background: linear-gradient(135deg, #eef2ff 0%, #f8fafc 100%);
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
 }
 
 .verification-form {
-  width: 500px;
-  height: 700px;
+  width: 100%;
+  max-width: 440px;
   display: flex;
-  flex-flow: column wrap;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  gap: 18px;
+  padding: 48px 40px;
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(79, 70, 229, 0.12);
 }
 
 .check-icon {
-  background-color: rgb(99, 102, 241);
-  height: 40px;
-  width: 40px;
-  border-radius: 10px;
-  margin-top: -150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 52px;
+  width: 52px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.35);
 }
 
 .check-icon-svg {
   color: white;
-  margin-left: 7px;
-  margin-top: 6px;
 }
 
 .brand-title {
-  color: rgb(99, 102, 241);
-  font-size: 18px;
-  font-weight: bold;
+  margin: 0;
+  color: #6366f1;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
 .verify-title {
-  color: black;
-  font-size: 24px;
-  font-weight: bold;
-  margin-top: 50px;
+  margin: 8px 0 0;
+  color: #111827;
+  font-size: 26px;
+  font-weight: 700;
   text-align: center;
 }
 
@@ -48,59 +59,67 @@
 }
 
 .description {
-  width: 60%;
+  width: 85%;
+  margin: 0;
+  color: #6b7280;
+  font-size: 14px;
+  line-height: 1.6;
   text-align: center;
 }
 
 .otp-wrapper {
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
+  padding: 8px 0;
 }
 
 .otp-container {
-  gap: 10px;
+  gap: 12px;
 }
 
 .otp-case {
-  width: 45px;
-  height: 50px;
-  font-size: 20px;
-  font-weight: bold;
+  width: 48px;
+  height: 56px;
+  font-size: 22px;
+  font-weight: 700;
   text-align: center;
-  color: rgb(99, 102, 241);
-  border: 2px solid #d1d5db;
-  border-radius: 8px;
+  color: #4f46e5;
+  background-color: #f9fafb;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
   outline: none;
+  transition: all 0.2s ease;
 }
 
 .otp-case:focus {
-  border: 2px solid rgb(99, 102, 241);
+  border-color: #6366f1;
+  background-color: white;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+}
+
+.button-wrapper {
+  width: 100%;
+  margin-top: 8px;
 }
 
 .verify-button {
+  width: 100%;
+  padding: 14px 0;
   color: white;
-  background-color: rgb(70, 72, 212);
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-right: 120px;
-  padding-left: 120px;
-  border-radius: 10px;
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
   border: none;
+  border-radius: 12px;
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 700;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
 }
 
 .verify-button:hover {
-  background-color: rgb(50, 52, 192);
-  transform: scale(1.01);
-  box-shadow: 0 6px 16px rgba(99, 102, 241, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(99, 102, 241, 0.45);
 }
+
 .verify-button:active {
-  transform: scale(0.99);
-  /* transform: translateY(2px); descend de 2px */
-  box-shadow: 0 2px 6px rgba(99, 102, 241, 0.3); /* ombre réduite */
-  translate:2px 1px; /* décalage de 1px vers le bas et la droite */
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
 }
