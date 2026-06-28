@@ -15,7 +15,7 @@ export default function App(): React.ReactElement {
         <Route path="/home" element={<Home />} />
         <Route path="/signIn" element={<Signin />} />
         <Route path="/signUp" element={<Signup />} />
-        <Route path="verification" element={<Verificationcode />} />
+        <Route path="/signUp/verification" element={<Verificationcode />} />
         <Route path="/signUp/typeprofile" element={<Typeprofile />} />
       </Routes>
     </React.Fragment>
