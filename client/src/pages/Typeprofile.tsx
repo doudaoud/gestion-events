@@ -1,13 +1,19 @@
-import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import "./styles/typeprofile.css";
+
 export default function Typeprofile() {
-  return <React.Fragment>
-    <div className="titles-profiletype"> 
-      <div className="retour_linscription">
-        <Link to={""}>
-         &larr; Back to registration 
-         </Link> 
+  return (
+    <>
+      <div className="profiletype-page">
+        <div className="titles-profiletype">
+          <div className="retour_linscription">
+            <Link to="/register">&larr; Back to registration</Link>
+          </div>
+          <div className="profiletype-title">
+            <h2>Event Management</h2>
+          </div>
+        </div>
       </div>
-    </div>
-  </React.Fragment>;
+    </>
+  );
 }

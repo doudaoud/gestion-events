@@ -1,0 +1,31 @@
+.profiletype-page {
+  min-height: 100vh;
+}
+
+.titles-profiletype {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 16px 32px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.retour_linscription a {
+  color: #6366f1;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.retour_linscription a:hover {
+  text-decoration: underline;
+}
+
+.profiletype-title h2 {
+  margin: 0;
+  color: #111827;
+  font-size: 20px;
+  font-weight: 700;
+}
