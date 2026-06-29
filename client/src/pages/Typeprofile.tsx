@@ -18,10 +18,12 @@ export default function Typeprofile() {
             <h1>Choose your account type</h1>
             <p>
               Select the profile that best fits your needs to personalize your
-              event management experience. You can always change your profile
-              type later in your account settings.
+              event management experience.
             </p>
-            
+          </div>
+          <div className="profiletype-options">
+            <div></div>
+            <div></div>
           </div>
         </div>
       </div>
