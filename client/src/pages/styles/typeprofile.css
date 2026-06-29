@@ -33,7 +33,19 @@
 .title-profiletype {
   text-align: center;
   width: 70%;
-  margin-top:200px;
-  margin-left:auto;
-  margin-right:auto;
+  margin-top: 200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.title-profiletype h1 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #111827;
+}
+.title-profiletype p {
+  font-size: 15px;
+  color: #6b7280;
+  margin-top: 8px;
+  width: 55%;
+  margin: auto;
 }
