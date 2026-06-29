@@ -13,6 +13,17 @@ export default function Typeprofile() {
             <h2>Event Management</h2>
           </div>
         </div>
+        <div className="profiletype-content">
+          <div className="title-profiletype">
+            <h1>Choose your account type</h1>
+            <p>
+              Select the profile that best fits your needs to personalize your
+              event management experience. You can always change your profile
+              type later in your account settings.
+            </p>
+            
+          </div>
+        </div>
       </div>
     </>
   );
