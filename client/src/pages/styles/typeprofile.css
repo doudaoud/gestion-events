@@ -96,6 +96,7 @@
   width: 94%;
   border-radius: 5px;
   margin-bottom: 50px;
+  padding-left: 10px
 }
 
 .profiletype-continue-btn {
@@ -104,4 +105,5 @@
   text-align: center;
   padding: 10px 188px;
   border-radius: 8px;
+  font-weight: bolder;
 }

@@ -1,8 +1,28 @@
 import { Link } from "react-router-dom";
 import "./styles/typeprofile.css";
+import { type SxProps } from '@mui/material/styles'
+
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
+
+const CHECKBOX_COLOR = "rgb(70, 72, 212)";
+const checkboxSx: SxProps = {
+  color: CHECKBOX_COLOR,
+  "&.Mui-checked": {
+    color: CHECKBOX_COLOR,
+  },
+  "&.Mui-disabled": {
+    color: CHECKBOX_COLOR,
+    opacity: 0.4,
+  },
+};
+
+const label = {
+  slotProps: { input: { "aria-label": "Checkbox demo" } } as const,
+  sx: checkboxSx,
+};
+
 export default function Typeprofile() {
   return (
     <>
@@ -39,7 +59,8 @@ export default function Typeprofile() {
                 </p>
                 <div className="profiletype-checkbox">
                   <FormControlLabel
-                    control={<Checkbox />}
+                    
+                    control={<  Checkbox {...label} />  }
                     label=" I am a user (Attendee)"
                   />
                 </div>
