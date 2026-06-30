@@ -26,7 +26,10 @@ export default function Typeprofile() {
           <div className="profiletype-options">
             <div className="profiletype-card">
               <div className="icon-profiletype">
-                <PersonOutlinedIcon className="profiletype-icon" />
+                <PersonOutlinedIcon
+                  className="profiletype-icon"
+                  sx={{ fontSize: 32, color: "rgb(73, 75, 213)" }}
+                />
               </div>
               <div>
                 <h3 className="profiletype-card-title">User</h3>

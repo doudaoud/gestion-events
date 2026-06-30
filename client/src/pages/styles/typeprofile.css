@@ -63,15 +63,19 @@
   border-radius: 10px;
 }
 
-.profiletype-icon {
-  font-size: 50px;
-  color: rgb(73, 75, 213);
+.icon-profiletype {
   width: 60px;
   height: 60px;
   border-radius: 10px;
   background-color: rgba(73, 75, 213, 0.1);
-  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-top: 20px;
+}
+
+.profiletype-icon {
+  color: rgb(73, 75, 213);
 }
 
 .profiletype-card-title {
