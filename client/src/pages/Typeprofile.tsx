@@ -48,10 +48,20 @@ export default function Typeprofile() {
                 />
               </div>
               <div>
-                <h3>User</h3>
+                <h3
+                  style={{
+                    marginTop: "10px",
+                    fontSize: "20px",
+                    fontWeight: "bold",
+                  }}
+                >
+                  User
+                </h3>
                 <p
                   style={{
                     width: "95%",
+                    color: "rgb(88, 88, 101)",
+                    fontSize:"15px"
                   }}
                 >
                   Discover events, book tickets, and manage your personal
