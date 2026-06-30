@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "./styles/typeprofile.css";
-import { type SxProps } from '@mui/material/styles'
+import { type SxProps } from "@mui/material/styles";
 
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
@@ -59,15 +59,36 @@ export default function Typeprofile() {
                 </p>
                 <div className="profiletype-checkbox">
                   <FormControlLabel
-                    
-                    control={<  Checkbox {...label} />  }
+                    control={<Checkbox {...label} />}
                     label=" I am a user (Attendee)"
                   />
                 </div>
                 <button className="profiletype-continue-btn">Continue</button>
               </div>
             </div>
-            <div></div>
+            {/* <div></div> */}
+            <div className="profiletype-card">
+              <div className="icon-profiletype">
+                <PersonOutlinedIcon
+                  className="profiletype-icon"
+                  sx={{ fontSize: 32, color: "rgb(73, 75, 213)" }}
+                />
+              </div>
+              <div>
+                <h3 className="profiletype-card-title">User</h3>
+                <p className="profiletype-card-desc">
+                  Discover events, book tickets, and manage your personal
+                  schedule with ease.{" "}
+                </p>
+                <div className="profiletype-checkbox">
+                  <FormControlLabel
+                    control={<Checkbox {...label} />}
+                    label=" I am a user (Attendee)"
+                  />
+                </div>
+                <button className="profiletype-continue-btn">Continue</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

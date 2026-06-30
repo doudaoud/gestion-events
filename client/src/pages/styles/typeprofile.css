@@ -50,11 +50,13 @@
   margin: auto;
 }
 .profiletype-options {
+  margin-top: 40px;
   display: flex;
   flex-direction: row;
   justify-content: center;
+  gap:20px 
 }
-
+ 
 .profiletype-card {
   height: 333px;
   width: 500px;
@@ -96,7 +98,7 @@
   width: 94%;
   border-radius: 5px;
   margin-bottom: 50px;
-  padding-left: 10px
+  padding-left: 10px;
 }
 
 .profiletype-continue-btn {
@@ -106,4 +108,8 @@
   padding: 10px 188px;
   border-radius: 8px;
   font-weight: bolder;
+  transition: all 0.4s ease;
+}
+.profiletype-continue-btn:hover{
+  background-color: rgb(96, 99, 238);
 }
