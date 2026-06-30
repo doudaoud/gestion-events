@@ -61,7 +61,8 @@ export default function Typeprofile() {
                   style={{
                     width: "95%",
                     color: "rgb(88, 88, 101)",
-                    fontSize:"15px"
+                    fontSize: "15px",
+                    marginBottom: "17px",
                   }}
                 >
                   Discover events, book tickets, and manage your personal
@@ -70,7 +71,7 @@ export default function Typeprofile() {
                 <div
                   style={{
                     backgroundColor: " rgb(239, 244, 255) ",
-                    width: "90%",
+                    width: "94%",
                     borderRadius: "5px",
                   }}
                 >
@@ -79,6 +80,9 @@ export default function Typeprofile() {
                     label=" I am a user (Attendee)"
                   />
                 </div>
+                <button style={{
+                  
+                }}>Continue</button>
               </div>
             </div>
             <div></div>
