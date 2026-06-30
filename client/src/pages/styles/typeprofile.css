@@ -49,3 +49,8 @@
   width: 50%;
   margin: auto;
 }
+.profiletype-options{
+  display: flex;
+  flex-direction: row ;
+  justify-content: center;
+}

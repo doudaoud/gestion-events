@@ -23,8 +23,14 @@ export default function Typeprofile() {
               event management experience.
             </p>
           </div>
-          <div className="profiletype-options">
-            <div>
+          <div className="profiletype-options"   >
+            <div
+              style={{
+                height: "393px",
+                width: "493px",
+                border:"1px solid black"
+              }}
+            >
               <div className="icon-profiletype">
                 <PersonOutlinedIcon
                   style={{
@@ -44,10 +50,17 @@ export default function Typeprofile() {
                   Discover events, book tickets, and manage your personal
                   schedule with ease.{" "}
                 </p>
-                <div style={{
-                  
-                }} >
-                  <FormControlLabel control={<Checkbox />} label=" I am a user (Attendee)" />
+                <div
+                  style={{
+                    backgroundColor: " rgb(239, 244, 255) ",
+                    width: "90%",
+                    borderRadius: "5px",
+                  }}
+                >
+                  <FormControlLabel
+                    control={<Checkbox />}
+                    label=" I am a user (Attendee)"
+                  />
                 </div>
               </div>
             </div>
