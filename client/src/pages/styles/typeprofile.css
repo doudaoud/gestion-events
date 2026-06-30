@@ -49,8 +49,55 @@
   width: 50%;
   margin: auto;
 }
-.profiletype-options{
+.profiletype-options {
   display: flex;
-  flex-direction: row ;
+  flex-direction: row;
   justify-content: center;
+}
+
+.profiletype-card {
+  height: 333px;
+  width: 500px;
+  border: 1px solid rgba(227, 228, 233, 0.79);
+  padding-left: 30px;
+  border-radius: 10px;
+}
+
+.profiletype-icon {
+  font-size: 50px;
+  color: rgb(73, 75, 213);
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  background-color: rgba(73, 75, 213, 0.1);
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.profiletype-card-title {
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.profiletype-card-desc {
+  width: 95%;
+  color: rgb(88, 88, 101);
+  font-size: 15px;
+  margin-bottom: 17px;
+}
+
+.profiletype-checkbox {
+  background-color: rgb(239, 244, 255);
+  width: 94%;
+  border-radius: 5px;
+  margin-bottom: 50px;
+}
+
+.profiletype-continue-btn {
+  background-color: rgb(75, 77, 187);
+  color: white;
+  text-align: center;
+  padding: 10px 188px;
+  border-radius: 8px;
 }

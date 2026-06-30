@@ -24,65 +24,23 @@ export default function Typeprofile() {
             </p>
           </div>
           <div className="profiletype-options">
-            <div
-              style={{
-                height: "333px",
-                width: "500px",
-                border: "1px solid rgba(227, 228, 233, 0.79)",
-                paddingLeft: "30px",
-                borderRadius: "10px",
-              }}
-            >
+            <div className="profiletype-card">
               <div className="icon-profiletype">
-                <PersonOutlinedIcon
-                  style={{
-                    fontSize: 50,
-                    color: "rgb(73, 75, 213)",
-                    width: "60px",
-                    height: "60px",
-                    borderRadius: "10px",
-                    backgroundColor: "rgb(73, 75, 213,0.1)",
-                    padding: "10px",
-                    marginTop: "20px",
-                  }}
-                />
+                <PersonOutlinedIcon className="profiletype-icon" />
               </div>
               <div>
-                <h3
-                  style={{
-                    marginTop: "10px",
-                    fontSize: "20px",
-                    fontWeight: "bold",
-                  }}
-                >
-                  User
-                </h3>
-                <p
-                  style={{
-                    width: "95%",
-                    color: "rgb(88, 88, 101)",
-                    fontSize: "15px",
-                    marginBottom: "17px",
-                  }}
-                >
+                <h3 className="profiletype-card-title">User</h3>
+                <p className="profiletype-card-desc">
                   Discover events, book tickets, and manage your personal
                   schedule with ease.{" "}
                 </p>
-                <div
-                  style={{
-                    backgroundColor: " rgb(239, 244, 255) ",
-                    width: "94%",
-                    borderRadius: "5px",
-                  }}
-                >
+                <div className="profiletype-checkbox">
                   <FormControlLabel
                     control={<Checkbox />}
                     label=" I am a user (Attendee)"
                   />
                 </div>
-                <button style={{
-                  
-                }}>Continue</button>
+                <button className="profiletype-continue-btn">Continue</button>
               </div>
             </div>
             <div></div>
