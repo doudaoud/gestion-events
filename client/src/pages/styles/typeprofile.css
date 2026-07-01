@@ -33,7 +33,7 @@
 .title-profiletype {
   text-align: center;
   width: 70%;
-  margin-top: 150px;
+  margin-top: 80px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -54,11 +54,11 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  gap:20px 
+  gap: 20px;
 }
- 
+
 .profiletype-card {
-  height: 333px;
+  height: 400px;
   width: 500px;
   border: 1px solid rgba(227, 228, 233, 0.79);
   padding-left: 30px;
@@ -110,6 +110,22 @@
   font-weight: bolder;
   transition: all 0.4s ease;
 }
-.profiletype-continue-btn:hover{
+.profiletype-continue-btn:hover {
   background-color: rgb(96, 99, 238);
+}
+.user-btn {
+  margin-top: 45px;
+}
+.scan-btn {
+  color: white;
+  /* text-align: center; */
+  padding: 10px 163px;
+  border-radius: 8px;
+  font-weight: bolder;
+  transition: all 0.4s ease;
+  background-color: rgb(12, 29, 49);
+  transform: all 0.4s ease;
+}
+.scan-btn:hover {
+  background-color: rgb(54, 58, 74);
 }

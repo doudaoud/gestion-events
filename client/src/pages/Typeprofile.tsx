@@ -4,6 +4,7 @@ import { type SxProps } from "@mui/material/styles";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
+import DocumentScannerOutlinedIcon from '@mui/icons-material/DocumentScannerOutlined';
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import Person4OutlinedIcon from "@mui/icons-material/Person4Outlined";
 const CHECKBOX_COLOR = "rgb(70, 72, 212)";
@@ -63,7 +64,9 @@ export default function Typeprofile() {
                     label=" I am a user (Attendee)"
                   />
                 </div>
-                <button className="profiletype-continue-btn">Continue</button>
+                <button className="profiletype-continue-btn user-btn">
+                  Continue
+                </button>
               </div>
             </div>
             {/* <div></div> */}
@@ -113,7 +116,9 @@ export default function Typeprofile() {
                     label=" I am an organizer"
                   />
                 </div>
-                <button className="profiletype-continue-btn">Continue</button>
+                <button className="scan-btn">
+                 <DocumentScannerOutlinedIcon/> Scan my ID
+                </button>
               </div>
             </div>
           </div>
