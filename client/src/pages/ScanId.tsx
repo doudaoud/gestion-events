@@ -10,13 +10,36 @@ export default function ScanId() {
           justifyContent: "space-between",
           width: "95%",
           margin: "0 auto",
-         }}
+        }}
       >
-        <h2 style={{
-          
-        }} >Gestion Events</h2>
-        <button>
-          <CloseOutlinedIcon /> Cancel
+        <h2
+          style={{
+            fontSize: "1.5rem",
+            fontWeight: "bold",
+            color: "rgb(75, 77, 213)",
+          }}
+        >
+          Gestion Events
+        </h2>
+        <button
+          style={{
+            color: "rgb(119, 119, 131)",
+            fontSize: "1.2rem",
+          }}
+        >
+          <CloseOutlinedIcon
+            style={{
+              marginTop: "-0.1rem",
+            }}
+          />{" "}
+          <p
+            style={{
+              display: "inline-block",
+              marginLeft: "0.5rem",
+            }}
+          >
+            Cancel
+          </p>
         </button>
       </div>
       <div className="scan-page">
