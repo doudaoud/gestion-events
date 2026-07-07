@@ -3,8 +3,18 @@ import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 export default function ScanId() {
   return (
     <React.Fragment>
-      <div className="navbar-scan-page">
-        <h2>Gestion Events</h2>
+      <div
+        className="navbar-scan-page"
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          width: "95%",
+          margin: "0 auto",
+         }}
+      >
+        <h2 style={{
+          
+        }} >Gestion Events</h2>
         <button>
           <CloseOutlinedIcon /> Cancel
         </button>
