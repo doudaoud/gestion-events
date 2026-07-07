@@ -44,8 +44,15 @@ export default function ScanId() {
       </div>
       <div className="scan-page">
         <div>
-          <h2>Identity Verification</h2>
-          <p>
+          <h1 style={{
+            fontSize: "2rem",
+            fontWeight: "bold",
+            
+          }}  >Identity Verification</h1>
+          <p style={{
+            color: "rgb(70, 69, 84)",
+            width: "50%",
+          }} >
             Please scan your identity document to validate your organizer
             profile and ensure the security of your future events.
           </p>
