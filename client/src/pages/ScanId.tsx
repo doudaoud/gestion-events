@@ -9,6 +9,7 @@ export default function ScanId() {
           display: "flex",
           justifyContent: "space-between",
           width: "95%",
+          height: "4rem",
           margin: "0 auto",
         }}
       >
@@ -42,8 +43,16 @@ export default function ScanId() {
           </p>
         </button>
       </div>
-      <div className="scan-page">
-        <div>
+      <div className="scan-page" style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "rgb(245, 245, 247)",
+        height: "50vh",
+      }} >
+        <div style={{
+          width: "50%",
+        }} >
           <h1 style={{
             fontSize: "2rem",
             fontWeight: "bold",
