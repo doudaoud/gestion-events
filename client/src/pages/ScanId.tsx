@@ -9,6 +9,7 @@ import GppGoodOutlinedIcon from "@mui/icons-material/GppGoodOutlined";
 import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
 import UploadFileOutlinedIcon from "@mui/icons-material/UploadFileOutlined";
 import BadgeOutlinedIcon from "@mui/icons-material/BadgeOutlined";
+import { useNavigate } from "react-router-dom";
 
 type StepId = 1 | 2;
 
@@ -18,6 +19,7 @@ const STEPS: { id: StepId; label: string }[] = [
 ];
 
 export default function ScanId() {
+  const navigate = useNavigate();
   const [activeStep, setActiveStep] = useState<StepId>(1);
   const [frontImage, setFrontImage] = useState<string | null>(null);
   const [backImage, setBackImage] = useState<string | null>(null);
@@ -52,7 +54,7 @@ export default function ScanId() {
     <div className="scanid-page">
       <header className="scanid-navbar">
         <h2 className="scanid-brand">Gestion Events</h2>
-        <button type="button" className="scanid-cancel">
+        <button type="button" className="scanid-cancel" onClick={() => navigate(-2)}>
           <CloseOutlinedIcon fontSize="small" />
           <span>Cancel</span>
         </button>
