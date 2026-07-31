@@ -129,6 +129,17 @@ export default function ScanId() {
               <span>GDPR Compliant</span>
             </div>
           </div>
+
+          {frontImage && backImage && (
+            <button
+              type="button"
+              className="scanid-submit-btn"
+              onClick={() => navigate("/signUp/typeprofile/scanId/waiting")}
+            >
+              <CheckCircleIcon fontSize="small" />
+              <span>Submit for verification</span>
+            </button>
+          )}
         </div>
 
         <div className="scanid-right">

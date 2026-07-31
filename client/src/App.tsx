@@ -7,6 +7,7 @@ import Signup from "./pages/Signup";
 import Verificationcode from "./pages/Verificationcode";
 import Typeprofile from "./pages/Typeprofile";
 import ScanId from "./pages/ScanId";
+import WaitingValidation from "./pages/WaitingValidation";
 export default function App(): React.ReactElement {
   return (
     <React.Fragment>
@@ -18,7 +19,10 @@ export default function App(): React.ReactElement {
         <Route path="/signUp/verification" element={<Verificationcode />} />
         <Route path="/signUp/typeprofile" element={<Typeprofile />} />
         <Route path="/signUp/typeprofile/scanId" element={<ScanId />} />
-        
+        <Route
+          path="/signUp/typeprofile/scanId/waiting"
+          element={<WaitingValidation />}
+        />
       </Routes>
     </React.Fragment>
   );

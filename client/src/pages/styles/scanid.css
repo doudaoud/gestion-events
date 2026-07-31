@@ -405,6 +405,28 @@
   border: 0;
 }
 
+/* ── Submit button ── */
+.scanid-submit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px 20px;
+  background-color: #4f46e5;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.scanid-submit-btn:hover {
+  background-color: #4338ca;
+}
+
 /* ── Responsive ── */
 @media (max-width: 860px) {
   .scanid-body {
