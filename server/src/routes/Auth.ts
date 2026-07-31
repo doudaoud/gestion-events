@@ -22,7 +22,7 @@ const AuthRouter: express.Router = express.Router();
 
 AuthRouter.post(
   "/Login",
-  // TODO audir pour la connxion correct
+  // TODO: ajouter l'audit pour la connxion correct
   expressAsyncHandler(
     async (req: express.Request, res: express.Response): Promise<void> => {
       const clientInfoLogin = req.body;
@@ -43,6 +43,16 @@ AuthRouter.post(
         clientInfoLogin.password,
         userexist.passwordHash,
       );
+      if (password_correct) {
+        console.log("mot de passe correct");
+        const new_action = new auditLogmodels({
+          action: ActionType.connexionSucees,
+          userID: userexist._id,
+          ipAddress: req.ip,
+        });
+        await new_action.save();
+        res.status(200).json({ message: "Connexion réussie", new_action });
+      }
       if (!password_correct) {
         console.log("mot de passe incorrect");
         console.log(
