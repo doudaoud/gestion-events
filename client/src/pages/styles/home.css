@@ -21,6 +21,14 @@ nav {
   align-items: center;
   flex: 1;
 }
+
+.left p {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: rgb(70, 72, 212);
+}
+
 .middle {
   display: flex;
   gap: 15px;
@@ -32,6 +40,7 @@ nav {
   transition: color 0.2s ease;
   position: relative;
   text-decoration: none;
+  color: #111827;
 }
 
 .middle > a::after {
