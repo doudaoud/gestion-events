@@ -145,6 +145,7 @@ AuthRouter.post(
         process.env.SECRET_KEY_JWT as string,
         { expiresIn: "5m" },
       );
+      sendConfirmationEmail(clientInfoRegister.email, code_verification);
       res.status(200).json({
         message: "inscription reussie, un mail de confirmation a été envoyé",
         token_registerUser: token_registerUser,
