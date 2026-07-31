@@ -8,8 +8,7 @@ export enum UserType {
 }
 
 export interface IUser extends Document {
-  firstName: string;
-  lastName: string;
+  fullName: string;
   email: string;
   passwordHash: string;
   role: UserType;
@@ -22,8 +21,7 @@ export interface IUser extends Document {
 
 const userSchema = new schema<IUser>(
   {
-    firstName: { type: String, required: true, maxlength: 50 },
-    lastName: { type: String, required: true },
+    fullName: { type: String, required: true, maxlength: 100 },
     email: { type: String, required: true, unique: true },
     passwordHash: { type: String, required: true, select: false },
     role: {
@@ -45,14 +43,13 @@ const userSchema = new schema<IUser>(
 export const User = model<IUser>("User", userSchema);
 // TODO: ajouter les champs de verification et de role pour les users et les organisateurs   REGLER LE MEME SCHEMA
 export const userValidationSchemaRegister = Joi.object({
-  firstName: Joi.string().required().max(50),
-  lastName: Joi.string().required(),
+  fullName: Joi.string().required().max(100),
   email: Joi.string().required().email(),
   password: Joi.string().required().min(6),
   role: Joi.string()
     .valid(...Object.values(UserType))
-    .default(UserType.USER)
-    .required(),
+    .default(UserType.USER),
+  agreeTerms: Joi.boolean().valid(true).required(),
 });
 export const userValidationSchemaLogin = Joi.object({
   email: Joi.string().required().email(),

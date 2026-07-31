@@ -67,6 +67,9 @@ export default function Home(): React.ReactNode {
             <Link to={"/signIn"} className="nav-signin-link">
               Sign in
             </Link>
+            <Link to={"/signup"} className="nav-signin-link">
+              Sign up
+            </Link>
             <ThemeProvider theme={theme}>
               <Button
                 variant="contained"

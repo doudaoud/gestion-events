@@ -6,7 +6,7 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import "./styles/signup.css";
-// import axios from "axios";
+import axios from "axios";
 
 export default function Signup(): React.ReactNode {
   const [showPassword, setShowPassword] = useState(false);
@@ -64,14 +64,24 @@ export default function Signup(): React.ReactNode {
                 formData.password &&
                 formData.agreeTerms
               ) {
-                //
-                localStorage.setItem("user", JSON.stringify(formData));
-                navigate("2");
-              } else {
-                //
+                try {
+
+                  const response = await axios.post("http://localhost:3000/api/auth/Register", formData);
+                  if (response.status === 201) {
+                    console.log("Registration successful:", response.data);
+                    const token_registerUser = response.data.token_registerUser;
+                    localStorage.setItem("token_registerUser", token_registerUser);
+                    navigate("/signUp/verificationcode");
+                  }
+                  else {
+                    console.error("Error during registration:", response.data);
+                  }
+                } catch (error) {
+                  console.error("Error during registration:", error);
+                }
+
               }
-            }}
-          >
+            }}>
             <div className="signup-field">
               <label htmlFor="fullName">Full Name</label>
               <input
@@ -138,7 +148,7 @@ export default function Signup(): React.ReactNode {
               </label>
             </div>
 
-            <button type="submit" className="signup-btn">
+            <button type="submit" className="signup-btn" >
               Create Account <ArrowForwardIcon fontSize="small" />
             </button>
           </form>
@@ -148,7 +158,7 @@ export default function Signup(): React.ReactNode {
           </p>
         </div>
       </div>
-    
+
     </div>
   );
 }

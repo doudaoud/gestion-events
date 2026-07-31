@@ -130,8 +130,7 @@ AuthRouter.post(
 
       // cree un tokern pour le register et et faire le truc de garger les infos de user dans le token
       let new_user = new User({
-        firstName: clientInfoRegister.firstName,
-        lastName: clientInfoRegister.lastName,
+        fullName: clientInfoRegister.fullName,
         email: clientInfoRegister.email,
         passwordHash: passwordHash,
         role: clientInfoRegister.role,
@@ -146,9 +145,9 @@ AuthRouter.post(
         { expiresIn: "5m" },
       );
       sendConfirmationEmail(clientInfoRegister.email, code_verification);
-      res.status(200).json({
+      res.status(201).json({
         message: "inscription reussie, un mail de confirmation a été envoyé",
-        token_registerUser: token_registerUser,
+        token_registerUser,
       });
       return;
     },
