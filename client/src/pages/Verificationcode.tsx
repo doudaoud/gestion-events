@@ -9,10 +9,27 @@ export default function Verificationcode() {
   const token_registerUser = object 
   const decodedToken = token_registerUser ? jwtDecode(token_registerUser) : null;
   console.log("Decoded Token:", decodedToken);
+  const code = decodedToken.code_verification;
+  console.log("code_verification:", code);
+ 
   //les fonctions
-  const handleVerification = () => {
-  
+  const isTokenExpired = () => {
+    const currentTime = Math.floor(Date.now() / 1000); // Temps actuel en secondes
+    if (decodedToken && decodedToken.exp) {
+      return decodedToken.exp < currentTime;
+    }
+    return true;
+
   };
+  const handleVerification = () => {
+    
+    if (otp == code && !isTokenExpired()) {
+      console.log("Verification successful");
+    }
+    else {
+      console.error("Verification failed et votre token est expiré:", isTokenExpired());
+    }
+  }
   return (
     <div className="verification-page">
       <div className="verification-form">
