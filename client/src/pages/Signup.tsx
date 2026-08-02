@@ -6,7 +6,7 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import "./styles/signup.css";
-import axios from "axios";
+import http, { getApiErrorMessage } from "../api/http";
 
 export default function Signup(): React.ReactNode {
   const [showPassword, setShowPassword] = useState(false);
@@ -16,6 +16,8 @@ export default function Signup(): React.ReactNode {
     password: "",
     agreeTerms: false,
   });
+  const [error, setError] = useState("");
+  const [submitting, setSubmitting] = useState(false);
   const navigate = useNavigate();
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
@@ -58,28 +60,25 @@ export default function Signup(): React.ReactNode {
           <form
             onSubmit={async (e) => {
               e.preventDefault();
+              setError("");
               if (
-                formData.fullName &&
-                formData.email &&
-                formData.password &&
-                formData.agreeTerms
+                !formData.fullName ||
+                !formData.email ||
+                !formData.password ||
+                !formData.agreeTerms
               ) {
-                try {
-
-                  const response = await axios.post("http://localhost:3000/api/auth/Register", formData);
-                  if (response.status === 201) {
-                    console.log("Registration successful:", response.data);
-                    const token_registerUser = response.data.token_registerUser;
-                    localStorage.setItem("token_registerUser", token_registerUser);
-                    navigate("/signUp/verification");
-                  }
-                  else {
-                    console.error("Error during registration:", response.data);
-                  }
-                } catch (error) {
-                  console.error("Error during registration:", error);
-                }
-
+                setError("Veuillez remplir tous les champs et accepter les conditions.");
+                return;
+              }
+              setSubmitting(true);
+              try {
+                const response = await http.post("/auth/Register", formData);
+                localStorage.setItem("pending_verification_email", response.data.email);
+                navigate("/signUp/verification");
+              } catch (err) {
+                setError(getApiErrorMessage(err, "Erreur lors de l'inscription, veuillez réessayer."));
+              } finally {
+                setSubmitting(false);
               }
             }}>
             <div className="signup-field">
@@ -148,13 +147,16 @@ export default function Signup(): React.ReactNode {
               </label>
             </div>
 
-            <button type="submit" className="signup-btn" >
-              Create Account <ArrowForwardIcon fontSize="small" />
+            {error && <p className="signup-error-message">{error}</p>}
+
+            <button type="submit" className="signup-btn" disabled={submitting}>
+              {submitting ? "Creating account..." : "Create Account"}{" "}
+              {!submitting && <ArrowForwardIcon fontSize="small" />}
             </button>
           </form>
 
           <p className="signup-signin-link">
-            Already have an account? <Link to="/signin">Sign In</Link>
+            Already have an account? <Link to="/signIn">Sign In</Link>
           </p>
         </div>
       </div>

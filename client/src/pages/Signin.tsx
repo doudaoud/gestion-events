@@ -1,16 +1,22 @@
 import { Fragment, useState } from "react";
 import EmailIcon from "@mui/icons-material/Email";
 import LockIcon from "@mui/icons-material/Lock";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import "./styles/signin.css";
+import http, { getApiErrorMessage } from "../api/http";
+
 export default function Signin(): React.ReactNode {
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [form, setForm] = useState({
     email: "",
     password: "",
   });
+  const [error, setError] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
     setForm({
@@ -18,6 +24,31 @@ export default function Signin(): React.ReactNode {
       [id]: value,
     });
   };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!form.email || !form.password) {
+      setError("Veuillez renseigner votre email et votre mot de passe.");
+      return;
+    }
+    setError("");
+    setSubmitting(true);
+    try {
+      const response = await http.post("/auth/Login", form);
+      localStorage.setItem("token", response.data.token);
+      const { role, verified } = response.data;
+      if (role === "organizer" && !verified) {
+        navigate("/signUp/typeprofile/scanId/waiting");
+      } else {
+        navigate("/home");
+      }
+    } catch (err) {
+      setError(getApiErrorMessage(err, "Email ou mot de passe incorrect."));
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   return (
     <Fragment>
       <div className="container_form_signin">
@@ -37,7 +68,7 @@ export default function Signin(): React.ReactNode {
         <div className="logo-container">
           <h2>Gestion des événements</h2>
         </div>
-        <div className="form_signin">
+        <form className="form_signin" onSubmit={handleSubmit}>
           <div className="form-header">
             <h2>Welcome back</h2>
             <p>Log in to manage your premium events and attendees.</p>
@@ -89,8 +120,14 @@ export default function Signin(): React.ReactNode {
               </span>
             </div>
           </div>
-          <button className="btn_signin">Sign in</button>
-        </div>
+          {error && <p className="signin-error-message">{error}</p>}
+          <button type="submit" className="btn_signin" disabled={submitting}>
+            {submitting ? "Signing in..." : "Sign in"}
+          </button>
+          <p className="signin-signup-link">
+            Don't have an account? <Link to="/signUp">Sign up</Link>
+          </p>
+        </form>
       </div>
     </Fragment>
   );

@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./styles/typeprofile.css";
 import { type SxProps } from "@mui/material/styles";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
@@ -7,6 +8,8 @@ import Checkbox from "@mui/material/Checkbox";
 import DocumentScannerOutlinedIcon from '@mui/icons-material/DocumentScannerOutlined';
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import Person4OutlinedIcon from "@mui/icons-material/Person4Outlined";
+import http, { getApiErrorMessage } from "../api/http";
+
 const CHECKBOX_COLOR = "rgb(70, 72, 212)";
 const checkboxSx: SxProps = {
   color: CHECKBOX_COLOR,
@@ -24,13 +27,44 @@ const label = {
   sx: checkboxSx,
 };
 
+type ProfileRole = "user" | "organizer";
+
 export default function Typeprofile() {
+  const navigate = useNavigate();
+  const [selectedRole, setSelectedRole] = useState<ProfileRole | null>(null);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    if (!localStorage.getItem("token")) {
+      navigate("/signUp");
+    }
+  }, [navigate]);
+
+  const chooseRole = async (role: ProfileRole) => {
+    setError("");
+    setSubmitting(true);
+    try {
+      const response = await http.patch("/auth/role", { role });
+      localStorage.setItem("token", response.data.token);
+      if (role === "organizer") {
+        navigate("/signUp/typeprofile/scanId");
+      } else {
+        navigate("/home");
+      }
+    } catch (err) {
+      setError(getApiErrorMessage(err, "Impossible de mettre à jour le profil."));
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   return (
     <>
       <div className="profiletype-page">
         <div className="titles-profiletype">
           <div className="retour_linscription">
-            <Link to="/register">&larr; Back to registration</Link>
+            <Link to="/signUp">&larr; Back to registration</Link>
           </div>
           <div className="profiletype-title">
             <h2>Event Management</h2>
@@ -44,6 +78,7 @@ export default function Typeprofile() {
               event management experience.
             </p>
           </div>
+          {error && <p className="profiletype-error-message">{error}</p>}
           <div className="profiletype-options">
             <div className="profiletype-card">
               <div className="icon-profiletype">
@@ -60,12 +95,24 @@ export default function Typeprofile() {
                 </p>
                 <div className="profiletype-checkbox">
                   <FormControlLabel
-                    control={<Checkbox {...label} />}
+                    control={
+                      <Checkbox
+                        {...label}
+                        checked={selectedRole === "user"}
+                        onChange={(_, checked) =>
+                          setSelectedRole(checked ? "user" : null)
+                        }
+                      />
+                    }
                     label=" I am a user (Attendee)"
                   />
                 </div>
-                <button className="profiletype-continue-btn user-btn">
-                  Continue
+                <button
+                  className="profiletype-continue-btn user-btn"
+                  disabled={selectedRole !== "user" || submitting}
+                  onClick={() => chooseRole("user")}
+                >
+                  {submitting && selectedRole === "user" ? "..." : "Continue"}
                 </button>
               </div>
             </div>
@@ -112,12 +159,27 @@ export default function Typeprofile() {
                 </p>
                 <div className="profiletype-checkbox">
                   <FormControlLabel
-                    control={<Checkbox {...label} />}
+                    control={
+                      <Checkbox
+                        {...label}
+                        checked={selectedRole === "organizer"}
+                        onChange={(_, checked) =>
+                          setSelectedRole(checked ? "organizer" : null)
+                        }
+                      />
+                    }
                     label=" I am an organizer"
                   />
                 </div>
-                <button className="scan-btn">
-                 <DocumentScannerOutlinedIcon/> Scan my ID
+                <button
+                  className="scan-btn"
+                  disabled={selectedRole !== "organizer" || submitting}
+                  onClick={() => chooseRole("organizer")}
+                >
+                  <DocumentScannerOutlinedIcon />{" "}
+                  {submitting && selectedRole === "organizer"
+                    ? "..."
+                    : "Scan my ID"}
                 </button>
               </div>
             </div>

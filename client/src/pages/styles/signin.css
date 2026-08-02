@@ -167,6 +167,35 @@
   background-color: #4f51c7;
 }
 
+.btn_signin:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.signin-error-message {
+  margin: -8px 0 12px;
+  color: #dc2626;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.signin-signup-link {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.signin-signup-link a {
+  color: #6063ee;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.signin-signup-link a:hover {
+  text-decoration: underline;
+}
+
 .divider {
   display: flex;
   align-items: center;

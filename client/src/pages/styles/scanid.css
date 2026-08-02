@@ -427,6 +427,17 @@
   background-color: #4338ca;
 }
 
+.scanid-submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.scanid-error-message {
+  margin: 0;
+  color: #dc2626;
+  font-size: 0.85rem;
+}
+
 /* ── Responsive ── */
 @media (max-width: 860px) {
   .scanid-body {

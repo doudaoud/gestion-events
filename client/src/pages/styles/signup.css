@@ -254,6 +254,17 @@
   background: #4f51c7;
 }
 
+.signup-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.signup-error-message {
+  margin: -4px 0 14px;
+  color: #dc2626;
+  font-size: 0.8rem;
+}
+
 /* ── Footer link ── */
 .signup-signin-link {
   text-align: center;

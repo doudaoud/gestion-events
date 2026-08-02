@@ -7,7 +7,7 @@ import startupNight from "../../assets/event_startup_night.png";
 import { ThemeProvider } from "@mui/material/styles";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
-import theme from "../themes/theme";
+import theme from "../themes/Theme";
 import "./styles/home.css";
 import SearchBar from "../components/Searchbar";
 // TODO: regler le truc de create event pour que si t'es pas connecté ça te redirige vers sign in et faire la verefication des compte pour voir esq cest un organisateur ou pas et afficher les event en fonction de ça (genre les organisateurs voient tous les events et les autres que les events publics) et faire la page de profil pour voir les events auxquels t'as participé et ceux que t'as organisé et faire la page de création d'event avec le formulaire et tout et faire la page de connexion et d'inscription et faire la partie admin pour valider les organisateurs et les events et f
@@ -43,7 +43,18 @@ const events = [
 
 export default function Home(): React.ReactNode {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    () => Boolean(localStorage.getItem("token")),
+  );
   const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setIsLoggedIn(false);
+    setMobileMenuOpen(false);
+    navigate("/home");
+  };
+
   return (
     <React.Fragment>
       {/* ── Navbar ── */}
@@ -64,12 +75,20 @@ export default function Home(): React.ReactNode {
             <a href="#contact">Support</a>
           </div>
           <div className="right">
-            <Link to={"/signIn"} className="nav-signin-link">
-              Sign in
-            </Link>
-            <Link to={"/signup"} className="nav-signin-link">
-              Sign up
-            </Link>
+            {isLoggedIn ? (
+              <button className="nav-signin-link" onClick={handleLogout}>
+                Log out
+              </button>
+            ) : (
+              <>
+                <Link to={"/signIn"} className="nav-signin-link">
+                  Sign in
+                </Link>
+                <Link to={"/signup"} className="nav-signin-link">
+                  Sign up
+                </Link>
+              </>
+            )}
             <ThemeProvider theme={theme}>
               <Button
                 variant="contained"
@@ -120,13 +139,28 @@ export default function Home(): React.ReactNode {
             </a>
           </div>
           <div className="right">
-            <Link
-              to={"/signIn"}
-              className="nav-signin-link"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Sign in
-            </Link>
+            {isLoggedIn ? (
+              <button className="nav-signin-link" onClick={handleLogout}>
+                Log out
+              </button>
+            ) : (
+              <>
+                <Link
+                  to={"/signIn"}
+                  className="nav-signin-link"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Sign in
+                </Link>
+                <Link
+                  to={"/signup"}
+                  className="nav-signin-link"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Sign up
+                </Link>
+              </>
+            )}
             <ThemeProvider theme={theme}>
               <Button
                 variant="contained"
@@ -136,7 +170,14 @@ export default function Home(): React.ReactNode {
                   borderRadius: "8px",
                   fontWeight: 600,
                 }}
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  if (localStorage.getItem("token")) {
+                    navigate("/createEvent");
+                  } else {
+                    navigate("/signIn");
+                  }
+                }}
               >
                 Create Event
               </Button>

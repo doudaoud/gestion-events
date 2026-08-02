@@ -129,3 +129,16 @@
 .scan-btn:hover {
   background-color: rgb(54, 58, 74);
 }
+
+.profiletype-continue-btn:disabled,
+.scan-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.profiletype-error-message {
+  text-align: center;
+  color: #dc2626;
+  font-size: 14px;
+  margin: 24px 0 0;
+}

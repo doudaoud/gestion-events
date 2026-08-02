@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./styles/scanid.css";
 import scanHeroImage from "../../assets/scan-id-hero.png";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
@@ -10,6 +10,7 @@ import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
 import UploadFileOutlinedIcon from "@mui/icons-material/UploadFileOutlined";
 import BadgeOutlinedIcon from "@mui/icons-material/BadgeOutlined";
 import { useNavigate } from "react-router-dom";
+import http, { getApiErrorMessage } from "../api/http";
 
 type StepId = 1 | 2;
 
@@ -23,7 +24,36 @@ export default function ScanId() {
   const [activeStep, setActiveStep] = useState<StepId>(1);
   const [frontImage, setFrontImage] = useState<string | null>(null);
   const [backImage, setBackImage] = useState<string | null>(null);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (!localStorage.getItem("token")) {
+      navigate("/signUp");
+    }
+  }, [navigate]);
+
+  const handleSubmit = async () => {
+    if (!frontImage || !backImage) {
+      return;
+    }
+    setError("");
+    setSubmitting(true);
+    try {
+      await http.post("/auth/organizer/documents", {
+        idFront: frontImage,
+        idBack: backImage,
+      });
+      navigate("/signUp/typeprofile/scanId/waiting");
+    } catch (err) {
+      setError(
+        getApiErrorMessage(err, "Impossible de soumettre vos documents, veuillez réessayer."),
+      );
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   const handleUploadClick = () => {
     fileInputRef.current?.click();
@@ -130,14 +160,17 @@ export default function ScanId() {
             </div>
           </div>
 
+          {error && <p className="scanid-error-message">{error}</p>}
+
           {frontImage && backImage && (
             <button
               type="button"
               className="scanid-submit-btn"
-              onClick={() => navigate("/signUp/typeprofile/scanId/waiting")}
+              onClick={handleSubmit}
+              disabled={submitting}
             >
               <CheckCircleIcon fontSize="small" />
-              <span>Submit for verification</span>
+              <span>{submitting ? "Submitting..." : "Submit for verification"}</span>
             </button>
           )}
         </div>
