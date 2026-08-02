@@ -2,9 +2,17 @@ import { useState } from "react";
 import "./styles/verification.css";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import OtpInput from "react-otp-input";
-
+import {jwtDecode} from "jwt-decode";
 export default function Verificationcode() {
   const [otp, setOtp] = useState("");
+  const object   = localStorage.getItem("token_registerUser");
+  const token_registerUser = object 
+  const decodedToken = token_registerUser ? jwtDecode(token_registerUser) : null;
+  console.log("Decoded Token:", decodedToken);
+  //les fonctions
+  const handleVerification = () => {
+  
+  };
   return (
     <div className="verification-page">
       <div className="verification-form">
@@ -30,7 +38,7 @@ export default function Verificationcode() {
           />
         </div>
         <div className="button-wrapper">
-          <button type="button" className="verify-button">
+          <button type="button" className="verify-button" onClick={handleVerification}>
             verify&rarr;
           </button>
         </div>

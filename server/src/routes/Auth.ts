@@ -137,10 +137,10 @@ AuthRouter.post(
       });
 
       // Sauvegarde de l'utilisateur en base de données avec verified: false (par défaut dans ton schéma)
-      await new_user.save();
+      // await new_user.save();
 
       let token_registerUser = jsonWebToken.sign(
-        { userId: new_user._id, role: new_user.role },
+        { new_user, code_verification  },
         process.env.SECRET_KEY_JWT as string,
         { expiresIn: "5m" },
       );

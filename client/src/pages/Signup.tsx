@@ -71,7 +71,7 @@ export default function Signup(): React.ReactNode {
                     console.log("Registration successful:", response.data);
                     const token_registerUser = response.data.token_registerUser;
                     localStorage.setItem("token_registerUser", token_registerUser);
-                    navigate("/signUp/verificationcode");
+                    navigate("/signUp/verification");
                   }
                   else {
                     console.error("Error during registration:", response.data);
