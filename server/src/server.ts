@@ -2,6 +2,7 @@ import { createApp } from "./config/app.js";
 import "dotenv/config";
 import express from "express";
 import AuthRouter from "./routes/Auth.js";
+import EventRouter from "./routes/Event.js";
 import cors from "cors";
 const app: express.Express = createApp();
 const PORT: string | undefined = process.env.PORT;
@@ -12,6 +13,7 @@ app.use(
   }),
 );
 app.use("/api/auth", AuthRouter);
+app.use("/api/events", EventRouter);
 // app.use("/booking", bookingRoutes);
 // app.use("/user", userRoutes);
 

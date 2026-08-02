@@ -1,15 +1,12 @@
 import { Schema as schema, Document, Types, model } from "mongoose";
+import Joi from "joi";
+
 export enum EventType {
   CONFERENCE = "conference",
   WORKSHOP = "workshop",
   HACKATHON = "hackathon",
 }
-//  cest un objet qui va faire reference a l'id de l'organisateur de user direct pour lie l'event a son organisateur sans faire tout ca dans le schema
-export type Organizateur = {
-  type: Types.ObjectId;
-  ref: "User";
-  required: true;
-};
+
 export interface IEvent extends Document {
   title: string;
   description: string;
@@ -17,8 +14,8 @@ export interface IEvent extends Document {
   date_End: Date;
   location: string;
   type: EventType;
-  // organizer: string; // pour lie l"organizateur de l'event
-  organizer: Organizateur;
+  image?: string;
+  organizer: Types.ObjectId;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -39,10 +36,26 @@ export const eventSchema = new schema<IEvent>(
       enum: EventType,
       required: true,
     },
-    organizer: { type: Types.ObjectId, ref: "Organizer", required: true },
+    image: { type: String },
+    organizer: { type: Types.ObjectId, ref: "User", required: true },
   },
   { timestamps: true },
 );
 
-// export const Event = mongoose.model<IEvent>("Event", eventSchema);
 export const Event = model<IEvent>("Event", eventSchema);
+
+export const eventValidationSchema = Joi.object({
+  title: Joi.string().required().min(4).max(100),
+  description: Joi.string().required().min(10).max(1000),
+  date_Begin: Joi.date().required(),
+  date_End: Joi.date().required().min(Joi.ref("date_Begin")),
+  location: Joi.string().required(),
+  type: Joi.string()
+    .required()
+    .valid(...Object.values(EventType)),
+  image: Joi.string().uri().allow("").optional(),
+});
+
+export function validateEvent(data: unknown) {
+  return eventValidationSchema.validate(data);
+}

@@ -74,6 +74,7 @@ AuthRouter.post(
       res.status(200).json({
         message: "Connexion réussie",
         token,
+        userId: userexist._id,
         role: userexist.role,
         verified: userexist.verified,
       });
@@ -199,6 +200,7 @@ AuthRouter.post(
       res.status(200).json({
         message: "Compte vérifié avec succès",
         token,
+        userId: new_user._id,
         role: new_user.role,
         verified: new_user.verified,
       });
@@ -241,6 +243,7 @@ AuthRouter.patch(
       res.status(200).json({
         message: "Profil mis à jour",
         token,
+        userId: user._id,
         role: user.role,
         verified: user.verified,
       });

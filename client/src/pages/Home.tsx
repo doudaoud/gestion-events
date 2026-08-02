@@ -50,6 +50,7 @@ export default function Home(): React.ReactNode {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("role");
     setIsLoggedIn(false);
     setMobileMenuOpen(false);
     navigate("/home");

@@ -35,8 +35,10 @@ export default function Signin(): React.ReactNode {
     setSubmitting(true);
     try {
       const response = await http.post("/auth/Login", form);
+      const { role, verified, userId } = response.data;
       localStorage.setItem("token", response.data.token);
-      const { role, verified } = response.data;
+      localStorage.setItem("role", role);
+      localStorage.setItem("userId", userId);
       if (role === "organizer" && !verified) {
         navigate("/signUp/typeprofile/scanId/waiting");
       } else {
