@@ -8,6 +8,9 @@ import Verificationcode from "./pages/Verificationcode";
 import Typeprofile from "./pages/Typeprofile";
 import ScanId from "./pages/ScanId";
 import WaitingValidation from "./pages/WaitingValidation";
+import CreateEvent from "./pages/CreateEvent";
+import EventDetails from "./pages/EventDetails";
+import MyEvents from "./pages/MyEvents";
 export default function App(): React.ReactElement {
   return (
     <React.Fragment>
@@ -23,6 +26,9 @@ export default function App(): React.ReactElement {
           path="/signUp/typeprofile/scanId/waiting"
           element={<WaitingValidation />}
         />
+        <Route path="/createEvent" element={<CreateEvent />} />
+        <Route path="/events/:id" element={<EventDetails />} />
+        <Route path="/myEvents" element={<MyEvents />} />
       </Routes>
     </React.Fragment>
   );

@@ -48,6 +48,7 @@ export default function Typeprofile() {
       const response = await http.patch("/auth/role", { role });
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("role", response.data.role);
+      localStorage.setItem("userId", response.data.userId);
       if (role === "organizer") {
         navigate("/signUp/typeprofile/scanId");
       } else {

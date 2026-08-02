@@ -1,0 +1,130 @@
+.eventdetails-page {
+  min-height: 100vh;
+  background-color: #f5f5f7;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
+  padding: 40px 20px 80px;
+}
+
+.eventdetails-status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: #6b7280;
+}
+
+.eventdetails-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.eventdetails-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #6b7280;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.eventdetails-back-link:hover {
+  color: #4f46e5;
+}
+
+.eventdetails-card {
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+}
+
+.eventdetails-img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+}
+
+.eventdetails-body {
+  padding: 32px 36px 40px;
+}
+
+.eventdetails-type-badge {
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #4f46e5;
+  background: rgba(99, 102, 241, 0.12);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+}
+
+.eventdetails-title {
+  margin: 0 0 18px;
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: #111827;
+}
+
+.eventdetails-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.eventdetails-meta span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #374151;
+  font-size: 0.92rem;
+}
+
+.eventdetails-meta svg {
+  color: #6366f1;
+}
+
+.eventdetails-description {
+  color: #4b5563;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  white-space: pre-line;
+}
+
+.eventdetails-error-message {
+  color: #dc2626;
+  font-size: 0.85rem;
+  margin-top: 16px;
+}
+
+.eventdetails-delete-btn {
+  margin-top: 24px;
+  padding: 10px 20px;
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid rgba(220, 38, 38, 0.3);
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.eventdetails-delete-btn:hover {
+  background: #fee2e2;
+}
+
+.eventdetails-delete-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

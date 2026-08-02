@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../../assets/screen.png";
 import eventImage from "../../assets/unnamed.png";
 import techSummit from "../../assets/event_tech_summit.png";
@@ -10,47 +10,47 @@ import Button from "@mui/material/Button";
 import theme from "../themes/Theme";
 import "./styles/home.css";
 import SearchBar from "../components/Searchbar";
-// TODO: regler le truc de create event pour que si t'es pas connecté ça te redirige vers sign in et faire la verefication des compte pour voir esq cest un organisateur ou pas et afficher les event en fonction de ça (genre les organisateurs voient tous les events et les autres que les events publics) et faire la page de profil pour voir les events auxquels t'as participé et ceux que t'as organisé et faire la page de création d'event avec le formulaire et tout et faire la page de connexion et d'inscription et faire la partie admin pour valider les organisateurs et les events et f
-const events = [
-  {
-    id: 1,
-    image: techSummit,
-    badge: "CONFIRMED",
-    badgeType: "confirmed",
-    date: "Oct 23, 2024",
-    title: "Global Tech Summit 2024",
-    location: "San Francisco, CA",
-  },
-  {
-    id: 2,
-    image: aiRobotics,
-    badge: "PENDING",
-    badgeType: "pending",
-    date: "Nov 15, 2024",
-    title: "AI & Robotics Exhibition",
-    location: "London, UK",
-  },
-  {
-    id: 3,
-    image: startupNight,
-    badge: "CONFIRMED",
-    badgeType: "confirmed",
-    date: "Dec 8, 2024",
-    title: "Start-up Founders Night",
-    location: "New York, NY",
-  },
-];
+import http, { getApiErrorMessage } from "../api/http";
+// TODO: faire la page de profil pour voir les events auxquels t'as participé,
+// afficher les events publics differemment pour les organisateurs (vue admin),
+// et faire la partie admin pour valider les organisateurs et les events.
+
+const FALLBACK_IMAGES = [techSummit, aiRobotics, startupNight, eventImage];
+
+interface EventData {
+  _id: string;
+  title: string;
+  date_Begin: string;
+  location: string;
+  type: string;
+  image?: string;
+}
 
 export default function Home(): React.ReactNode {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [events, setEvents] = useState<EventData[]>([]);
+  const [eventsLoading, setEventsLoading] = useState(true);
+  const [eventsError, setEventsError] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(
     () => Boolean(localStorage.getItem("token")),
   );
+  const [role] = useState(() => localStorage.getItem("role"));
   const navigate = useNavigate();
+
+  useEffect(() => {
+    http
+      .get("/events")
+      .then((response) => setEvents(response.data.events))
+      .catch((err) =>
+        setEventsError(getApiErrorMessage(err, "Impossible de charger les événements.")),
+      )
+      .finally(() => setEventsLoading(false));
+  }, []);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("role");
+    localStorage.removeItem("userId");
     setIsLoggedIn(false);
     setMobileMenuOpen(false);
     navigate("/home");
@@ -76,6 +76,11 @@ export default function Home(): React.ReactNode {
             <a href="#contact">Support</a>
           </div>
           <div className="right">
+            {isLoggedIn && role === "organizer" && (
+              <Link to={"/myEvents"} className="nav-signin-link">
+                My Events
+              </Link>
+            )}
             {isLoggedIn ? (
               <button className="nav-signin-link" onClick={handleLogout}>
                 Log out
@@ -140,6 +145,15 @@ export default function Home(): React.ReactNode {
             </a>
           </div>
           <div className="right">
+            {isLoggedIn && role === "organizer" && (
+              <Link
+                to={"/myEvents"}
+                className="nav-signin-link"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                My Events
+              </Link>
+            )}
             {isLoggedIn ? (
               <button className="nav-signin-link" onClick={handleLogout}>
                 Log out
@@ -223,47 +237,65 @@ export default function Home(): React.ReactNode {
               Hand-picked experiences happening in your area soon.
             </p>
           </div>
-          <a href="" className="view-all-link">
+          <a href="#events" className="view-all-link">
             View all events <span>→</span>
           </a>
         </div>
 
-        <div className="events-grid">
-          {events.map((event) => (
-            <div className="event-card" key={event.id}>
-              <div className="event-card-img-wrapper">
-                <img
-                  src={event.image}
-                  alt={event.title}
-                  className="event-card-img"
-                />
-                <span className={`event-badge event-badge--${event.badgeType}`}>
-                  {event.badge}
-                </span>
-              </div>
-              <div className="event-card-body">
-                <p className="event-card-date">{event.date}</p>
-                <h3 className="event-card-title">{event.title}</h3>
-                <p className="event-card-location">
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                    <circle cx="12" cy="10" r="3" />
-                  </svg>
-                  {event.location}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
+        {eventsLoading ? (
+          <p className="events-status">Loading events…</p>
+        ) : eventsError ? (
+          <p className="events-status">{eventsError}</p>
+        ) : events.length === 0 ? (
+          <p className="events-status">
+            No events yet. Be the first to create one!
+          </p>
+        ) : (
+          <div className="events-grid">
+            {events.slice(0, 3).map((event, index) => (
+              <Link
+                to={`/events/${event._id}`}
+                className="event-card"
+                key={event._id}
+              >
+                <div className="event-card-img-wrapper">
+                  <img
+                    src={event.image || FALLBACK_IMAGES[index % FALLBACK_IMAGES.length]}
+                    alt={event.title}
+                    className="event-card-img"
+                  />
+                  <span className="event-badge event-badge--confirmed">
+                    {event.type}
+                  </span>
+                </div>
+                <div className="event-card-body">
+                  <p className="event-card-date">
+                    {new Date(event.date_Begin).toLocaleDateString("en-US", {
+                      dateStyle: "medium",
+                    })}
+                  </p>
+                  <h3 className="event-card-title">{event.title}</h3>
+                  <p className="event-card-location">
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                      <circle cx="12" cy="10" r="3" />
+                    </svg>
+                    {event.location}
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        )}
       </section>
 
       {/* ── Why Choose Gestion Events ── */}
