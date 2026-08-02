@@ -46,6 +46,10 @@ export default function Verificationcode() {
     if (!decodedToken) {
       return;
     }
+    if (!otp || otp.length < 6) {
+      setError("Veuillez insérer le code de vérification.");
+      return;
+    }
     if (isTokenExpired(decodedToken)) {
       setError("Votre code a expiré, veuillez recommencer l'inscription.");
       return;
